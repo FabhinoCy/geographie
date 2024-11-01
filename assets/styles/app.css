@@ -1,3 +1,71 @@
-body {
-    background-color: skyblue;
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    height: 100px;
+    background-color: #264650;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header a {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+
+    margin: 10px;
+}
+
+header #search {
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+    color: #F5F5F5;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+    color: #F5F5F5;
+    margin-top: 40px;
+}
+
+#country {
+    background-image: url("../../assets/img/background_country.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vh - 102px);
+    padding: 1px;
+
+    #displayGames {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 40px;
+
+        div {
+            display: flex;
+            flex-direction: column;
+
+            span {
+                font-family: 'Montserrat', sans-serif;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 18px;
+                text-align: center;
+                color: #F5F5F5;
+            }
+        }
+    }
 }

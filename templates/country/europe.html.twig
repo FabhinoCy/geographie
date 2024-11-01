@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Europe{% endblock %}
+
+{% block body %}
+    {% include 'components/header.html.twig' %}
+
+    <div id="country">
+        <h1>EUROPE</h1>
+        <div id="displayGames">
+            <a href="{{ path('app_game_capitales_europe') }}">
+                <div>
+                    <img src="{{ asset('img/background_game.svg') }}" alt="game">
+                    <span>Capitales d'Europe</span>
+
+                </div>
+            </a>
+            <a>
+                <div>
+                    <img src="{{ asset('img/background_game.svg') }}" alt="game">
+                    <span>Pays d'Europe</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+{% endblock %}
