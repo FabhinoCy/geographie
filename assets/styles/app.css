@@ -69,3 +69,57 @@ h1 {
         }
     }
 }
+
+#gaming {
+    background-image: url("../../assets/img/background_gaming.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: calc(100vh - 102px);
+    padding: 1px;
+}
+
+#gaming #block-game {
+    width: 850px;
+    height: 450px;
+    background-color: rebeccapurple;
+    margin: 25px auto 25px auto;
+    border-radius: 10px;
+    opacity: 0.95;
+    padding: 1px;
+}
+
+#gaming #block-game h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    text-align: center;
+    color: #F5F5F5;
+    margin-top: 70px;
+}
+
+#gaming #block-game div {
+    width: 200px;
+    height: 70px;
+    background: #281A31;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 120px auto 0 auto;
+    transition: 0.3s all;
+}
+
+#gaming #block-game div:hover {
+    cursor: pointer;
+    background-color: #220b30;
+}
+
+#gaming #block-game div span {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    text-align: center;
+    color: #72C4FF;
+}

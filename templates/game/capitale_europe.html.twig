@@ -3,6 +3,16 @@
 {% block title %}Capitales d'Europe{% endblock %}
 
 {% block body %}
+    {% include 'components/header.html.twig' %}
 
+    <div id="gaming">
+        <div id="block-game">
+            <h1>Capitales d'Europe</h1>
+            <div class="btnPlay">
+                <span>Jouer</span>
+            </div>
+        </div>
+    </div>
 
+    <script src="{{ asset('js/main.js') }}"></script>
 {% endblock %}
