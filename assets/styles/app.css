@@ -98,7 +98,7 @@ h1 {
     margin-top: 70px;
 }
 
-#gaming #block-game div {
+#gaming #block-game .btnPlay {
     width: 200px;
     height: 70px;
     background: #281A31;
@@ -110,16 +110,48 @@ h1 {
     transition: 0.3s all;
 }
 
-#gaming #block-game div:hover {
+#gaming #block-game .btnPlay:hover {
     cursor: pointer;
     background-color: #220b30;
 }
 
-#gaming #block-game div span {
+#gaming #block-game .btnPlay span {
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 40px;
     text-align: center;
     color: #72C4FF;
+}
+
+#gaming #block-game #answers {
+    width: 80%;
+    margin: 60px auto 0 auto;
+    background-color: red;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#gaming #block-game #answers span {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
+    text-align: center;
+    color: #F5F5F5;
+    width: 45%;
+    background-color: blue;
+    margin: 10px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+#gaming #block-game #answers span:hover {
+    background-color: skyblue;
 }

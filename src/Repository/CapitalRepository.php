@@ -40,4 +40,14 @@ class CapitalRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+    public function findCapitalsByContinent(string $continent) {
+        return $this->createQueryBuilder('capital')
+            ->innerJoin('capital.country', 'country')
+            ->innerJoin('country.continent', 'continent')
+            ->where('continent.name = :continent')
+            ->setParameter('continent', $continent)
+            ->getQuery()
+            ->getResult();
+    }
 }

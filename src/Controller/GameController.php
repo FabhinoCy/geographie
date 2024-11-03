@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CapitalRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,10 +20,23 @@ class GameController extends AbstractController
     }
 
     #[Route('capitales-europe-data', name:'capitales_europe_data')]
-    public function dataCapitalesEurope(): JsonResponse
+    public function dataCapitalesEurope(
+        CapitalRepository $capitalRepository,
+    ): JsonResponse
     {
+        $capitals = $capitalRepository->findCapitalsByContinent('Europe');
+
         $array = [];
 
-        return new JsonResponse($array);
+        foreach ($capitals as $capital) {
+            $capitalName = $capital->getName();
+            $countryName = $capital->getCountry()->getName();
+            $array[] = [
+                'capital' => $capitalName,
+                'country' => $countryName,
+            ];
+        }
+
+        return $this->json($array);
     }
 }
