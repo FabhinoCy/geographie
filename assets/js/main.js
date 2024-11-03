@@ -43,20 +43,33 @@ function endGame() {
     answers.style.display = 'none'
 }
 
+var alreadyUsed = []
+
 function newQuestion() {
     shuffle(data)
 
-    const random = getRandomPays(data);
+    const temporaireData = data
+    const fabien = []
+
+    temporaireData.forEach((element) => {
+        if (!alreadyUsed.includes(element.Pays)) {
+            fabien.push(element)
+        }
+    })
+
+    const random = getRandomPays(fabien);
+    if (random === undefined) {
+        endGame();
+        return;
+    }
     var pays = random.Pays
 
-    if (alreadyUsed.includes(pays)) {
-        endGame();
-    }
+    titre.innerHTML = pays
 
-    if (!alreadyUsed.includes(random)) {
+    /*if (!alreadyUsed.includes(random)) {
         alreadyUsed.push(random.Pays)
         titre.innerHTML = random.Pays
-    }
+    }*/
 
     var ok = [random]
     alreadyUsed.push(pays)
