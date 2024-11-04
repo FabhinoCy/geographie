@@ -8,8 +8,9 @@
     <div id="gaming">
         <div id="block-game">
             <h1>Capitales d'Europe</h1>
+            <span id="timer"></span>
             <div class="btnPlay">
-                <span>Jouer</span>
+                <span>JOUER</span>
             </div>
             <div id="answers" style="display: none">
                 <span></span>
@@ -17,8 +18,10 @@
                 <span></span>
                 <span></span>
             </div>
+            <button id="playAgain">Rejouer</button>
+            <h2 id="liveScore">0</h2>
         </div>
     </div>
 
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/capitales_europe.js') }}"></script>
 {% endblock %}

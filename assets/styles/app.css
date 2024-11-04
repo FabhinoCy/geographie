@@ -81,7 +81,7 @@ h1 {
 #gaming #block-game {
     width: 850px;
     height: 450px;
-    background-color: rebeccapurple;
+    background-color: #134e88;
     margin: 25px auto 25px auto;
     border-radius: 10px;
     opacity: 0.95;
@@ -106,12 +106,12 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 120px auto 0 auto;
+    margin: 100px auto 0 auto;
+    cursor: pointer;
     transition: 0.3s all;
 }
 
 #gaming #block-game .btnPlay:hover {
-    cursor: pointer;
     background-color: #220b30;
 }
 
@@ -119,7 +119,7 @@ h1 {
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 40px;
+    font-size: 35px;
     text-align: center;
     color: #72C4FF;
 }
@@ -127,7 +127,6 @@ h1 {
 #gaming #block-game #answers {
     width: 80%;
     margin: 60px auto 0 auto;
-    background-color: red;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -142,7 +141,7 @@ h1 {
     text-align: center;
     color: #F5F5F5;
     width: 45%;
-    background-color: blue;
+    background-color: #0d326a;
     margin: 10px;
     height: 60px;
     display: flex;
@@ -153,5 +152,40 @@ h1 {
 }
 
 #gaming #block-game #answers span:hover {
-    background-color: skyblue;
+    background-color: #123d81;
+}
+
+#gaming #result {
+    display: none;
+}
+
+#gaming #block-game #liveScore {
+    font-family: 'Montserrat', sans-serif;
+    color: #F5F5F5;
+    text-align: center;
+    display: none;
+    margin-top: 40px;
+}
+
+#gaming #block-game #playAgain {
+    display: none;
+    width: 200px;
+    height: 70px;
+    background-color: #281A31;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    margin: 80px auto 20px auto;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    text-align: center;
+    color: #72C4FF;
+    transition: 0.3s all;
+}
+
+#gaming #block-game #playAgain:hover {
+    cursor: pointer;
+    background-color: #220b30;
 }

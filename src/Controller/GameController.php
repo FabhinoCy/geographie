@@ -14,29 +14,6 @@ class GameController extends AbstractController
     #[Route('capitales-europe', name: 'capitales_europe')]
     public function capitalesEurope(): Response
     {
-        return $this->render('game/capitale_europe.html.twig', [
-
-        ]);
-    }
-
-    #[Route('capitales-europe-data', name:'capitales_europe_data')]
-    public function dataCapitalesEurope(
-        CapitalRepository $capitalRepository,
-    ): JsonResponse
-    {
-        $capitals = $capitalRepository->findCapitalsByContinent('Europe');
-
-        $array = [];
-
-        foreach ($capitals as $capital) {
-            $capitalName = $capital->getName();
-            $countryName = $capital->getCountry()->getName();
-            $array[] = [
-                'capital' => $capitalName,
-                'country' => $countryName,
-            ];
-        }
-
-        return $this->json($array);
+        return $this->render('game/capitales_europe.html.twig');
     }
 }
