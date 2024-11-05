@@ -1,27 +1,39 @@
-var blockGame = document.getElementById('block-game')
-var titre     = blockGame.querySelector('h1')
-var btnPlay   = blockGame.querySelector('.btnPlay')
-var answers   = blockGame.querySelector('#answers')
-var liveScore = document.getElementById('liveScore')
-var result    = document.getElementById('result')
-var playAGain = document.getElementById('playAgain')
-var timer     = document.getElementById('timer')
+var blockGame  = document.getElementById('block-game')
+var titre      = blockGame.querySelector('h1')
+var btnPlay    = blockGame.querySelector('.btnPlay')
+var answers    = blockGame.querySelector('#answers')
+var liveScore  = document.getElementById('liveScore')
+var result     = document.getElementById('result')
+var playAGain  = document.getElementById('playAgain')
+var goodAnswer = document.getElementById('goodAnswer')
+var resultTime = document.getElementById('time')
 
-var score = 0
+var score             = 0
 var nbQuestionsGaming = 0
-var nbMaxQuestions = 2
-var time = 0
+var nbMaxQuestions    = 2
+var time              = 1
+var gameFinished      = false
+
+function runTime() {
+    const timer = setInterval(function() {
+        if (gameFinished === true) {
+            clearInterval(timer)
+        }
+        time += 1
+    }, 1000)
+}
 
 playAGain.addEventListener('click', function() {
     playAgain()
 })
 
 function playAgain() {
-    playAGain.style.display = 'none'
-    score = 0
-    nbQuestionsGaming = 0
-    liveScore.textContent = `${score} / ${nbQuestionsGaming}`
-    alreadyUsed = []
+    playAGain.style.display  = 'none'
+    score                    = 0
+    nbQuestionsGaming        = 0
+    liveScore.textContent    = `${score} / ${nbQuestionsGaming}`
+    alreadyUsed              = []
+    resultTime.style.display = 'none'
 
     countdown()
 }
@@ -78,7 +90,7 @@ function countdown() {
     liveScore.style.display = 'none'
 
     var counter     = 3
-    titre.innerHTML = counter
+    titre.innerHTML = `${counter}`
 
     var i = setInterval(function(){
         counter--
@@ -87,16 +99,21 @@ function countdown() {
         if (counter === 0) {
             clearInterval(i)
             newQuestion()
-            answers.style.display = 'flex'
+            runTime()
+            answers.style.display   = 'flex'
             liveScore.style.display = 'block'
+
         }
-    }, 800)
+    }, 80)
 }
 
 function endGame() {
-    titre.innerHTML = 'Partie terminée'
-    answers.style.display = 'none'
-    playAGain.style.display = 'block'
+    titre.innerHTML          = 'Partie terminée'
+    answers.style.display    = 'none'
+    playAGain.style.display  = 'block'
+    gameFinished             = true
+    resultTime.style.display = 'block'
+    resultTime.innerHTML     = 'Temps de la partie : ' + time + ' s'
 }
 
 function newQuestion() {
@@ -150,6 +167,11 @@ spans.forEach((span) => {
 
         if (pays === titre.textContent) {
             score++
+            goodAnswer.style.display = 'block'
+            const i = setInterval(function() {
+                goodAnswer.style.display = 'none'
+                clearInterval(i)
+            }, 400)
         }
 
         nbQuestionsGaming++

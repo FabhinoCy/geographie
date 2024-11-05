@@ -84,7 +84,7 @@ h1 {
     background-color: #134e88;
     margin: 25px auto 25px auto;
     border-radius: 10px;
-    opacity: 0.95;
+    opacity: 0.97;
     padding: 1px;
 }
 
@@ -188,4 +188,31 @@ h1 {
 #gaming #block-game #playAgain:hover {
     cursor: pointer;
     background-color: #220b30;
+}
+
+#gaming #block-game #time {
+    display: none;
+    text-align: center;
+    margin-top: 15px;
+    color: #F5F5F5;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#gaming #block-game #goodAnswer {
+    display: none;
+    color: green;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+
+    animation-name: example;
+    animation-duration: 0.4s;
+}
+
+@keyframes example {
+    from {
+        margin-left: -20px;
+    }
+    to {
+        margin-left: 10px;
+    }
 }
