@@ -22,8 +22,14 @@ class GameController extends AbstractController
     }
 
     #[Route('capitales-asie', name: 'capitales_asie')]
-    public function capitaleAsie(): Response
+    public function capitalesAsie(): Response
     {
         return $this->render('game/capitales_asie.html.twig');
+    }
+
+    #[Route('capitales-oceanie', name: 'capitales_oceanie')]
+    public function capitalesOceanie(): Response
+    {
+        return $this->render('game/capitales_oceanie.html.twig');
     }
 }

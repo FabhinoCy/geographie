@@ -8,44 +8,6 @@ var playAGain  = document.getElementById('playAgain')
 var goodAnswer = document.getElementById('goodAnswer')
 var resultTime = document.getElementById('time')
 
-var data = [
-    { 'Pays': 'Albanie', 'Capitale': 'Tirana', },
-    { 'Pays': 'Allemagne', 'Capitale': 'Berlin', },
-    { 'Pays': 'Angleterre', 'Capitale': 'Londres', },
-    { 'Pays': 'Autriche', 'Capitale': 'Vienne', },
-    { 'Pays': 'Belgique', 'Capitale': 'Bruxelles', },
-    { 'Pays': 'Bulgarie', 'Capitale': 'Sofia', },
-    { 'Pays': 'Chypre', 'Capitale': 'Nicosie', },
-    { 'Pays': 'Croatie', 'Capitale': 'Zagreb', },
-    { 'Pays': 'Danemark', 'Capitale': 'Copenhague', },
-    { 'Pays': 'Espagne', 'Capitale': 'Madrid', },
-    { 'Pays': 'Estonie', 'Capitale': 'Tallinn', },
-    { 'Pays': 'Finlande', 'Capitale': 'Helsinki', },
-    { 'Pays': 'France', 'Capitale': 'Paris', },
-    { 'Pays': 'Grèce', 'Capitale': 'Athènes', },
-    { 'Pays': 'Hongrie', 'Capitale': 'Budapest', },
-    { 'Pays': 'Irlande', 'Capitale': 'Dublin', },
-    { 'Pays': 'Italie', 'Capitale': 'Rome', },
-    { 'Pays': 'Leichtenstein', 'Capitale': 'Vaduz', },
-    { 'Pays': 'Lettonie', 'Capitale': 'Riga', },
-    { 'Pays': 'Lituanie', 'Capitale': 'Vilnius', },
-    { 'Pays': 'Luxembourg', 'Capitale': 'Luxembourg', },
-    { 'Pays': 'Malte', 'Capitale': 'La Valette', },
-    { 'Pays': 'Monaco', 'Capitale': 'Monaco', },
-    { 'Pays': 'Norvège', 'Capitale': 'Oslo', },
-    { 'Pays': 'Pays-Bas', 'Capitale': 'Amsterdam', },
-    { 'Pays': 'Pologne', 'Capitale': 'Varsovie', },
-    { 'Pays': 'Portugal', 'Capitale': 'Lisbonne', },
-    { 'Pays': 'République tchèque', 'Capitale': 'Prague', },
-    { 'Pays': 'Roumanie', 'Capitale': 'Bucarest', },
-    { 'Pays': 'Serbie', 'Capitale': 'Belgrade', },
-    { 'Pays': 'Slovaquie', 'Capitale': 'Bratislava', },
-    { 'Pays': 'Slovénie', 'Capitale': 'Ljubjana', },
-    { 'Pays': 'Suède', 'Capitale': 'Stockholm', },
-    { 'Pays': 'Suisse', 'Capitale': 'Berne', },
-    { 'Pays': 'Ukraine', 'Capitale': 'Kiev', },
-]
-
 var score             = 0
 var nbQuestionsGaming = 0
 var nbMaxQuestions    = 10
@@ -54,12 +16,11 @@ var gameFinished      = false
 
 function runTime() {
     const timer = setInterval(function() {
-        time++
+        if (gameFinished === true) {
+            clearInterval(timer)
+        }
+        time += 1
     }, 1000)
-    if (gameFinished === true) {
-        clearInterval(timer)
-        time = 1
-    }
 }
 
 playAGain.addEventListener('click', function() {
@@ -76,6 +37,23 @@ function playAgain() {
 
     countdown()
 }
+
+var data = [
+    { 'Pays': 'Australie', 'Capitale': 'Canberra', },
+    { 'Pays': 'Fidji', 'Capitale': 'Suva', },
+    { 'Pays': 'Kiribati', 'Capitale': 'Tarawa', },
+    { 'Pays': 'Marshall', 'Capitale': 'Majuro', },
+    { 'Pays': 'Micronésie', 'Capitale': 'Palikir', },
+    { 'Pays': 'Nauru', 'Capitale': 'Yaren', },
+    { 'Pays': 'Nouvelle-Zélande', 'Capitale': 'Wellington', },
+    { 'Pays': 'Palaos', 'Capitale': 'Ngerulmud', },
+    { 'Pays': 'Papouasie-Nouvelle-Guinée', 'Capitale': 'Port Moresby', },
+    { 'Pays': 'Samoa', 'Capitale': 'Apia', },
+    { 'Pays': 'Îles Salomon', 'Capitale': 'Honiara', },
+    { 'Pays': 'Tonga', 'Capitale': 'Nukuʻalofa', },
+    { 'Pays': 'Tuvalu', 'Capitale': 'Funafuti', },
+    { 'Pays': 'Vanuatu', 'Capitale': 'Port-Vila', },
+]
 
 var alreadyUsed = []
 
