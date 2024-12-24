@@ -22,8 +22,13 @@
             <h3 id="time"></h3>
             <h2 id="goodAnswer">+1</h2>
         </div>
+
+        <div id="topResults">
+
+        </div>
     </div>
 
-    <script src="{{ asset('js/capitales_europe.js') }}"></script>
-    <script src="{{ asset('js/conf.js') }}"></script>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('capitales_europe') }}
+    {% endblock %}
 {% endblock %}

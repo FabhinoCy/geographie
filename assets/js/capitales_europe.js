@@ -1,3 +1,7 @@
+import axios from 'axios'
+
+console.log('ok ok')
+
 var blockGame  = document.getElementById('block-game')
 var titre      = blockGame.querySelector('h1')
 var btnPlay    = blockGame.querySelector('.btnPlay')
@@ -48,9 +52,10 @@ var data = [
 
 var score             = 0
 var nbQuestionsGaming = 0
-var nbMaxQuestions    = 10
+var nbMaxQuestions    = 2
 var time              = 1
 var gameFinished      = false
+var alreadyUsed       = []
 
 function runTime() {
     const timer = setInterval(function() {
@@ -67,17 +72,14 @@ playAGain.addEventListener('click', function() {
 })
 
 function playAgain() {
+    titre.innerHTML          = 'Capitales d\'Europe'
+    liveScore.style.display  = 'none'
+    resultTime.style.display = 'none'
     playAGain.style.display  = 'none'
+    btnPlay.style.display    = 'flex'
     score                    = 0
     nbQuestionsGaming        = 0
-    liveScore.textContent    = `${score} / ${nbQuestionsGaming}`
-    alreadyUsed              = []
-    resultTime.style.display = 'none'
-
-    countdown()
 }
-
-var alreadyUsed = []
 
 function shuffle(array) {
     array.sort(() => Math.random() - 0.5)
@@ -105,7 +107,7 @@ function countdown() {
             liveScore.style.display = 'block'
 
         }
-    }, 800)
+    }, 200)
 }
 
 function endGame() {
@@ -115,6 +117,15 @@ function endGame() {
     gameFinished             = true
     resultTime.style.display = 'block'
     resultTime.innerHTML     = 'Temps de la partie : ' + time + ' s'
+
+    // faire une requête vers le controller pour envoyer les données en bdd
+    axios.get('/game/test')
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 }
 
 function newQuestion() {

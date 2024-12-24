@@ -1,7 +1,7 @@
 <header>
-    <div>
+    <div id="logo">
         <a href="{{ path('app_home') }}">
-            <img id="logo" src="{{ asset('img/LOGO.svg') }}" alt="logo">
+            <img src="{{ asset('img/LOGO.svg') }}" alt="logo">
         </a>
     </div>
     <nav>
@@ -12,10 +12,9 @@
         <a href="{{ path('app_oceanie') }}">Océanie</a>
         <a href="{{ path('app_amerique') }}">Amérique</a>
     </nav>
-    <div id="search">
-        <input type="text">
-        <div>
-            <img src="{{ asset('img/SEARCH.svg') }}" alt="search">
-        </div>
+    <div id="profil">
+        <a href="{{ path('app_login') }}">
+            <img src="{{ asset('img/profil.svg') }}" alt="profil">
+        </a>
     </div>
 </header>

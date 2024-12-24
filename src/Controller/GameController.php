@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -13,6 +14,12 @@ class GameController extends AbstractController
     public function capitalesEurope(): Response
     {
         return $this->render('game/capitales_europe.html.twig');
+    }
+
+    #[Route('test', name: 'test')]
+    public function test(Request $request)
+    {
+        dd($request);
     }
 
     #[Route('capitales-afrique', name: 'capitales_afrique')]
