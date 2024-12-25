@@ -29,6 +29,17 @@ main {
     height: calc(100vh - 102px);
 }
 
+#toto {
+    width: 950px;
+    height: 550px;
+    background-color: #0a3622;
+    margin: 25px auto 25px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
 #stats {
     margin-left: 10px;
     margin-top: 10px;

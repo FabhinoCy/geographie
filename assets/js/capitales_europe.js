@@ -1,7 +1,5 @@
 import axios from 'axios'
 
-console.log('ok ok')
-
 var blockGame  = document.getElementById('block-game')
 var titre      = blockGame.querySelector('h1')
 var btnPlay    = blockGame.querySelector('.btnPlay')
@@ -11,6 +9,7 @@ var result     = document.getElementById('result')
 var playAGain  = document.getElementById('playAgain')
 var goodAnswer = document.getElementById('goodAnswer')
 var resultTime = document.getElementById('time')
+var stats      = document.getElementById('stats')
 
 var data = [
     { 'Pays': 'Albanie', 'Capitale': 'Tirana', },
@@ -92,6 +91,8 @@ function getRandomPays(data) {
 function countdown() {
     liveScore.style.display = 'none'
 
+    stats.style.display = 'none'
+
     var counter     = 3
     titre.innerHTML = `${counter}`
 
@@ -126,10 +127,10 @@ function endGame() {
     // faire une requête vers le controller pour envoyer les données en bdd
     axios.post('/game/test', data)
         .then((res) => {
-            console.log(res)
+
         })
         .catch((err) => {
-            console.log(err)
+
         })
 }
 
