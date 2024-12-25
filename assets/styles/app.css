@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
 a {
     text-decoration: none;
     color: #F5F5F5;
@@ -15,7 +19,7 @@ h1 {
     font-size: 30px;
     text-align: center;
     color: #F5F5F5;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 main {
@@ -23,6 +27,21 @@ main {
     background-repeat: no-repeat;
     background-size: cover;
     height: calc(100vh - 102px);
+}
+
+#stats {
+    margin-left: 10px;
+    margin-top: 10px;
+    color: #F5F5F5;
+
+    display: flex;
+    justify-content: space-between;
+
+    div {
+        &:nth-child(2) {
+            margin-right: 10px;
+        }
+    }
 }
 
 #country {
@@ -76,11 +95,16 @@ main {
 #gaming #block-game h1 {
     font-family: 'Montserrat', sans-serif;
     font-style: normal;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 50px;
     text-align: center;
     color: #F5F5F5;
-    margin-top: 70px;
+    margin-top: 40px;
+
+    span {
+        font-size: 55px;
+        font-weight: 800;
+    }
 }
 
 #gaming #block-game .btnPlay {

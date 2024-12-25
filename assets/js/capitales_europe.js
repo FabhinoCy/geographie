@@ -52,7 +52,7 @@ var data = [
 
 var score             = 0
 var nbQuestionsGaming = 0
-var nbMaxQuestions    = 2
+var nbMaxQuestions    = 6
 var time              = 1
 var gameFinished      = false
 var alreadyUsed       = []
@@ -105,7 +105,6 @@ function countdown() {
             runTime()
             answers.style.display   = 'flex'
             liveScore.style.display = 'block'
-
         }
     }, 200)
 }
@@ -118,8 +117,14 @@ function endGame() {
     resultTime.style.display = 'block'
     resultTime.innerHTML     = 'Temps de la partie : ' + time + ' s'
 
+    const data = {
+        type: 'capitales-europe',
+        score: score,
+        time: time
+    }
+
     // faire une requête vers le controller pour envoyer les données en bdd
-    axios.get('/game/test')
+    axios.post('/game/test', data)
         .then((res) => {
             console.log(res)
         })

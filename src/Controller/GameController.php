@@ -16,10 +16,20 @@ class GameController extends AbstractController
         return $this->render('game/capitales_europe.html.twig');
     }
 
-    #[Route('test', name: 'test')]
+    #[Route('test', name: 'test', methods: 'post')]
     public function test(Request $request)
     {
-        dd($request);
+
+        $data = $request->getContent();
+        $data = json_decode($data, true);
+        dd($data);
+
+        // user
+        // score
+        // time
+        // type
+        // nombre de questions
+        // resultat
     }
 
     #[Route('capitales-afrique', name: 'capitales_afrique')]
