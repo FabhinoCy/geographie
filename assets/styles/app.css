@@ -151,13 +151,16 @@ div.gameBackground {
                 align-items: end;
 
                 div.timer {
-                    display: block;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     right: 0;
                     width: 80px;
                     height: 80px;
                     border-radius: 50%;
                     background-color: #0a53be;
                     border: 8px solid #F5F5F5;
+                    font-size: 32px;
                 }
 
                 p.question {

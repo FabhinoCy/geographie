@@ -12,6 +12,7 @@ const countdown = game.querySelector('div.countdown')
 let alreadyUsed = []
 
 const gaming       = gameBlock.querySelector('div.gaming')
+const timer        = gaming.querySelector('div.timer')
 const question     = gaming.querySelector('p.question')
 const pronom       = question.querySelector('span.pronom')
 const paysQuestion = question.querySelector('span.pays')
@@ -20,18 +21,66 @@ const counter      = gaming.querySelector('div.counter')
 
 let score             = 0
 let nbQuestionsGaming = 0
-let nbMaxQuestions    = 20
+let nbMaxQuestions    = 3
+let nbSeconds         = 60
+let quizIsFinished    = false
 
 const result    = gameBlock.querySelector('div.result')
 const playAgain = result.querySelector('button.playAgain')
 
 btnPlay.addEventListener('click', displayCountdown)
 
+function setTimer() {
+    timer.textContent = `${nbSeconds}`
+
+    var interval = setInterval(function(){
+        if (quizIsFinished) {
+            clearInterval(interval)
+            return
+        }
+
+        nbSeconds--
+        timer.textContent = `${nbSeconds}`
+
+        if (nbSeconds === 0) {
+            clearInterval(interval)
+            endGame()
+        }
+    }, 1000)
+}
+
+function endGame() {
+    quizIsFinished = true
+    gaming.style.display = 'none'
+    result.style.display = 'flex'
+
+    emptyCounter()
+    displayCounter()
+
+    alreadyUsed = []
+
+    const data = {
+        type : 'capitales-europe',
+        score: score,
+        time : 57
+    }
+
+    axios.post('/game/test', data)
+        .then((res) => {
+
+        })
+        .catch((err) => {
+
+        })
+}
+
 function displayCountdown() {
     let counter              = 3
     beforeGame.style.display = 'none'
     countdown.style.display  = 'flex'
     countdown.textContent    = `${counter}`
+    quizIsFinished           = false
+    nbSeconds                = 60
 
     var i = setInterval(function(){
         counter--
@@ -43,8 +92,9 @@ function displayCountdown() {
 
             clearInterval(i)
             newQuestion()
+            setTimer()
         }
-    }, 100)
+    }, 1000)
 }
 
 function newQuestion() {
@@ -77,7 +127,7 @@ function newQuestion() {
 
     shuffle(displayAnswers)
 
-    var index   = 0
+    var index = 0
     answers.forEach((answer) => {
         answer.innerHTML = displayAnswers[index].Capitale
         answer.setAttribute('data-pays', displayAnswers[index].Pays)
@@ -133,32 +183,6 @@ answers.forEach((answer) => {
     })
 })
 
-function endGame() {
-    gaming.style.display = 'none'
-    result.style.display = 'flex'
-
-    emptyCounter()
-    displayCounter()
-
-    alreadyUsed = []
-
-    return
-
-    const data = {
-        type: 'capitales-europe',
-        score: score,
-        time: time
-    }
-
-    axios.post('/game/test', data)
-        .then((res) => {
-
-        })
-        .catch((err) => {
-
-        })
-}
-
 function emptyCounter() {
     const counters = counter.querySelectorAll('button.bubble')
 
@@ -173,5 +197,5 @@ playAgain.addEventListener('click', function() {
     score                    = 0
     liveScore.textContent    = score
     nbQuestionsGaming        = 0
-    nbMaxQuestions           = 20
+    nbMaxQuestions           = 3
 })

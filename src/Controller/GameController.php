@@ -2,6 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Game;
+use App\Entity\User;
+use App\Repository\GameRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,24 +15,38 @@ use Symfony\Component\Routing\Attribute\Route;
 class GameController extends AbstractController
 {
     #[Route('capitales-europe', name: 'capitales_europe')]
-    public function capitalesEurope(): Response
+    public function capitalesEurope(GameRepository $gameRepository): Response
     {
+        $games = $gameRepository->findBy(['user' => $this->getUser()]);
+        $bestScore = 0;
+
+        foreach ($games as $game) {
+            if ($game->getResult() > $bestScore) {
+                $bestScore = $game->getResult();
+            }
+        }
+
         return $this->render('game/capitales_europe.html.twig');
     }
 
     #[Route('test', name: 'test', methods: 'post')]
-    public function test(Request $request)
+    public function test(Request $request, EntityManagerInterface $entityManager)
     {
-
+        $user = $this->getUser();
         $data = $request->getContent();
         $data = json_decode($data, true);
-        dd($data);
 
-        // user
-        // score
-        // time
-        // type
-        // nombre de questions
-        // resultat
+        $game = new Game();
+
+        $game->setScore($data['score'])
+            ->setType($data['type'])
+            ->setTime($data['time'])
+            ->setUser($user)
+            ->setResult($data['score'] * $data['time']);
+
+        $entityManager->persist($game);
+        $entityManager->flush();
+
+        return $this->json(['ok']);
     }
 }
