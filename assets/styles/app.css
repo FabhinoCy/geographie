@@ -74,7 +74,6 @@ div.gameBackground {
             border-radius: 15px;
 
             div.beforeGame {
-                background-color: blue;
                 height: 400px;
 
                 div.stats {
@@ -138,8 +137,6 @@ div.gameBackground {
             div.countdown {
                 display: none;
                 height: 400px;
-                background-color: #0d9488;
-
                 justify-content: center;
                 align-items: center;
                 font-size: 46px;
@@ -150,7 +147,6 @@ div.gameBackground {
             div.gaming {
                 display: none;
                 height: 400px;
-                background-color: orange;
                 flex-direction: column;
                 align-items: end;
 
@@ -166,7 +162,6 @@ div.gameBackground {
 
                 p.question {
                     width: 100%;
-                    background-color: red;
                     text-align: center;
                     margin-top: -35px;
                     font-size: 26px;
@@ -183,7 +178,6 @@ div.gameBackground {
                     display: flex;
                     flex-wrap: wrap;
                     justify-content: space-around;
-                    background-color: brown;
                     margin: 50px auto 0 auto;
 
                     div.answer {
@@ -202,6 +196,23 @@ div.gameBackground {
                         &:hover {
                             background-color: #c7c7c7;
                         }
+                    }
+                }
+
+                div.counter {
+                    margin-top: 30px;
+                    height: 30px;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    button.bubble {
+                        width: 12px;
+                        height: 12px;
+                        border-radius: 50%;
+                        margin: 5px;
+                        border: none;
                     }
                 }
             }

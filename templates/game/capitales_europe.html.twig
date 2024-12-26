@@ -59,10 +59,12 @@
                     <h2>Fin de la partie !</h2>
                     <button class="playAgain">Rejouer</button>
                 </div>
-                <div class="otherStats">
-                    <p>Meilleur score : 32 872</p>
-                    <p>Classement : 167 / 83 654</p>
-                </div>
+                {% if app.user %}
+                    <div class="otherStats">
+                        <p>Meilleur score : 32 872</p>
+                        <p>Classement : 167 / 83 654</p>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
