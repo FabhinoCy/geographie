@@ -5,8 +5,50 @@
 {% block body %}
     {% include 'components/header.html.twig' %}
 
-    <div id="gaming">
+    <div class="gameBackground">
+        <div class="gameBlock">
+            <div class="liveScore">0</div>
+            <div class="game">
+                <div class="beforeGame">
+                    <div class="stats">
+                        <div class="nbGames">
+                            <h3>3 120 959</h3>
+                            <span>parties jouées</span>
+                        </div>
+                        <div class="scoreZone">
+                            <div class="starsScore">
+                                <img src="{{ asset('img/star.svg') }}" alt="etoile">
+                                <img src="{{ asset('img/star.svg') }}" alt="etoile">
+                                <img src="{{ asset('img/star.svg') }}" alt="etoile">
+                                : 38250
+                            </div>
+                            <div class="starsScore">
+                                <img src="{{ asset('img/star.svg') }}" alt="etoile">
+                                <img src="{{ asset('img/star.svg') }}" alt="etoile">
+                                <img src="{{ asset('img/star2.svg') }}" alt="etoile">
+                                : 31500
+                            </div>
+                            <div class="starsScore">
+                                <img src="{{ asset('img/star.svg') }}" alt="etoile">
+                                <img src="{{ asset('img/star2.svg') }}" alt="etoile">
+                                <img src="{{ asset('img/star2.svg') }}" alt="etoile">
+                                : 22500
+                            </div>
+                            <span class="bestScore">Meilleur score : 32 872</span>
+                        </div>
+                    </div>
+                    <h1 class="theme">Capitales d'<span>EUROPE</span></h1>
+                    <button class="btnPlay">Jouer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<div id="gaming">
         <div id="toto">
+            <div id="liveScore">
+                <span>0</span>
+            </div>
             <div id="block-game">
                 <div id="stats">
                     <div>
@@ -51,7 +93,7 @@
                 <h2 id="goodAnswer">+1</h2>
             </div>
         </div>
-    </div>
+    </div>-->
 
     {% block javascripts %}
         {{ encore_entry_script_tags('capitales_europe') }}

@@ -31,22 +31,4 @@ class GameController extends AbstractController
         // nombre de questions
         // resultat
     }
-
-    #[Route('capitales-afrique', name: 'capitales_afrique')]
-    public function capitalesAfrique(): Response
-    {
-        return $this->render('game/capitales_afrique.html.twig');
-    }
-
-    #[Route('capitales-asie', name: 'capitales_asie')]
-    public function capitalesAsie(): Response
-    {
-        return $this->render('game/capitales_asie.html.twig');
-    }
-
-    #[Route('capitales-oceanie', name: 'capitales_oceanie')]
-    public function capitalesOceanie(): Response
-    {
-        return $this->render('game/capitales_oceanie.html.twig');
-    }
 }
