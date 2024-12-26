@@ -12,7 +12,7 @@
                 <div class="beforeGame">
                     <div class="stats">
                         <div class="nbGames">
-                            <h3>3 120 959</h3>
+                            <h3>{{ nbGames }}</h3>
                             <span>parties jouées</span>
                         </div>
                         <div class="scoreZone">
@@ -34,7 +34,7 @@
                                 <img src="{{ asset('img/star2.svg') }}" alt="etoile">
                                 : 22500
                             </div>
-                            <span class="bestScore">Meilleur score : 32 872</span>
+                            <span class="bestScore">Meilleur score : {{ bestScore }}</span>
                         </div>
                     </div>
                     <h1 class="theme">Capitales d'<span>EUROPE</span></h1>
@@ -61,8 +61,8 @@
                 </div>
                 <div class="otherStats">
                     {% if app.user %}
-                        <p>Meilleur score : 32 872</p>
-                        <p>Classemen : 167 / 83 654</p>
+                        <p>Meilleur score : {{ bestScore }}</p>
+                        <p>Classement : 167 / 83 654</p>
                         {% else %}
                             <p>Connectez-vous pour enregistrer vos scores !</p>
                     {% endif %}

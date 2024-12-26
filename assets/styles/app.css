@@ -160,7 +160,9 @@ div.gameBackground {
                     border-radius: 50%;
                     background-color: #0a53be;
                     border: 8px solid #F5F5F5;
-                    font-size: 32px;
+                    font-size: 38px;
+                    color: #F5F5F5;
+                    font-weight: 600;
                 }
 
                 p.question {
@@ -211,11 +213,11 @@ div.gameBackground {
                     align-items: center;
 
                     button.bubble {
-                        width: 12px;
-                        height: 12px;
+                        width: 16px;
+                        height: 16px;
                         border-radius: 50%;
-                        margin: 5px;
-                        border: none;
+                        margin: 4px;
+                        border: 2px solid #F5F5F5;
                     }
                 }
             }

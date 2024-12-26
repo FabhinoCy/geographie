@@ -21,7 +21,7 @@ const counter      = gaming.querySelector('div.counter')
 
 let score             = 0
 let nbQuestionsGaming = 0
-let nbMaxQuestions    = 3
+let nbMaxQuestions    = 20
 let nbSeconds         = 60
 let quizIsFinished    = false
 
@@ -42,7 +42,7 @@ function setTimer() {
         nbSeconds--
         timer.textContent = `${nbSeconds}`
 
-        if (nbSeconds === 0) {
+        if (nbSeconds <= 0) {
             clearInterval(interval)
             endGame()
         }
@@ -62,10 +62,10 @@ function endGame() {
     const data = {
         type : 'capitales-europe',
         score: score,
-        time : 57
+        time : nbSeconds > 0 ? nbSeconds : 0
     }
 
-    axios.post('/game/test', data)
+    axios.post('/game/save', data)
         .then((res) => {
 
         })
@@ -94,7 +94,7 @@ function displayCountdown() {
             newQuestion()
             setTimer()
         }
-    }, 1000)
+    }, 800)
 }
 
 function newQuestion() {
@@ -168,6 +168,8 @@ answers.forEach((answer) => {
             score += 500
             liveScore.textContent = score
             answerIsCorrect       = true
+        } else {
+            nbSeconds -= 5
         }
 
         updateCounter(answerIsCorrect)
@@ -197,5 +199,5 @@ playAgain.addEventListener('click', function() {
     score                    = 0
     liveScore.textContent    = score
     nbQuestionsGaming        = 0
-    nbMaxQuestions           = 3
+    nbMaxQuestions           = 20
 })

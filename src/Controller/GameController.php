@@ -17,20 +17,29 @@ class GameController extends AbstractController
     #[Route('capitales-europe', name: 'capitales_europe')]
     public function capitalesEurope(GameRepository $gameRepository): Response
     {
-        $games = $gameRepository->findBy(['user' => $this->getUser()]);
-        $bestScore = 0;
+        $nbGames   = count($gameRepository->findBy(['type' => 'capitales-europe']));
 
-        foreach ($games as $game) {
-            if ($game->getResult() > $bestScore) {
-                $bestScore = $game->getResult();
+        $bestScore = 'X';
+
+        if ($this->getUser() instanceof User) {
+            $games     = $gameRepository->findBy(['type' => 'capitales-europe', 'user' => $this->getUser()]);
+            $bestScore = 0;
+
+            foreach ($games as $game) {
+                if ($game->getResult() > $bestScore) {
+                    $bestScore = $game->getResult();
+                }
             }
         }
 
-        return $this->render('game/capitales_europe.html.twig');
+        return $this->render('game/capitales_europe.html.twig', [
+            'nbGames'   => $nbGames,
+            'bestScore' => $bestScore
+        ]);
     }
 
-    #[Route('test', name: 'test', methods: 'post')]
-    public function test(Request $request, EntityManagerInterface $entityManager)
+    #[Route('save', name: 'save', methods: 'post')]
+    public function save(Request $request, EntityManagerInterface $entityManager)
     {
         $user = $this->getUser();
         $data = $request->getContent();
