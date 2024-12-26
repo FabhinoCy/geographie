@@ -9,12 +9,140 @@ const game       = gameBlock.querySelector('div.game')
 const beforeGame = game.querySelector('div.beforeGame')
 const btnPlay    = beforeGame.querySelector('button.btnPlay')
 
-// Quand on clique sur jouer
-btnPlay.addEventListener('click', function() {
-    //btnPlay.style.display = 'none'
-    //countdown()
-    
+const countdown = game.querySelector('div.countdown')
+
+let alreadyUsed = []
+
+const gaming       = gameBlock.querySelector('div.gaming')
+const question     = gaming.querySelector('p.question')
+const pronom       = question.querySelector('span.pronom')
+const paysQuestion = question.querySelector('span.pays')
+const answers      = gaming.querySelectorAll('div.answers div.answer')
+
+let score             = 0
+let nbQuestionsGaming = 0
+let nbMaxQuestions    = 3
+
+const result    = gameBlock.querySelector('div.result')
+const playAgain = result.querySelector('button.playAgain')
+
+btnPlay.addEventListener('click', displayCountdown)
+
+function displayCountdown() {
+    let counter              = 3
     beforeGame.style.display = 'none'
+    countdown.style.display  = 'flex'
+    countdown.textContent    = `${counter}`
+
+    var i = setInterval(function(){
+        counter--
+        countdown.textContent = `${counter}`
+
+        if (counter === 0) {
+            countdown.style.display = 'none'
+            gaming.style.display    = 'flex'
+
+            clearInterval(i)
+            newQuestion()
+        }
+    }, 100)
+}
+
+function newQuestion() {
+    shuffle(data)
+    const temporaireData = data
+    let possibleAnswers  = []
+
+    temporaireData.forEach((element) => {
+        if (!alreadyUsed.includes(element.Pays)) {
+            possibleAnswers.push(element)
+        }
+    })
+
+    const random = getRandomPays(possibleAnswers)
+    if (random === undefined) {
+        endGame()
+        return
+    }
+
+    pronom.textContent       = random.Pronom
+    paysQuestion.textContent = random.Pays
+
+    var displayAnswers = [random]
+    alreadyUsed.push(random.Pays)
+    data.forEach((element) => {
+        if (displayAnswers.length < 4 && element.Pays !== random.Pays) {
+            displayAnswers.push(element)
+        }
+    })
+
+    shuffle(displayAnswers)
+
+    var index   = 0
+    answers.forEach((answer) => {
+        answer.innerHTML = displayAnswers[index].Capitale
+        answer.setAttribute('data-pays', displayAnswers[index].Pays)
+        index++
+    })
+}
+
+function shuffle(array) {
+    array.sort(() => Math.random() - 0.5)
+}
+
+function getRandomPays(data) {
+    return data[Math.floor(Math.random() * data.length)]
+}
+
+answers.forEach((answer) => {
+    answer.addEventListener('click', function() {
+        const pays = answer.getAttribute('data-pays')
+
+        if (pays === paysQuestion.textContent) {
+            score += 500
+            liveScore.textContent = score
+        }
+
+        nbQuestionsGaming++
+
+        if (nbQuestionsGaming === nbMaxQuestions) {
+            endGame()
+            return
+        }
+
+        newQuestion()
+    })
+})
+
+function endGame() {
+    gaming.style.display = 'none'
+    result.style.display = 'flex'
+
+    return
+
+    const data = {
+        type: 'capitales-europe',
+        score: score,
+        time: time
+    }
+
+    // faire une requête vers le controller pour envoyer les données en bdd
+    axios.post('/game/test', data)
+        .then((res) => {
+
+        })
+        .catch((err) => {
+
+        })
+}
+
+playAgain.addEventListener('click', function() {
+    result.style.display     = 'none'
+    beforeGame.style.display = 'block'
+    score                    = 0
+    liveScore.textContent    = score
+    nbQuestionsGaming        = 0
+    nbMaxQuestions           = 3
 })
 
 /** fin refonte */
