@@ -1,55 +1,36 @@
 import axios from 'axios'
+import {data} from './data/capitales_europe'
 
-var blockGame  = document.getElementById('block-game')
+/** debut refonte */
+
+const gameBlock  = document.querySelector('div.gameBlock')
+const liveScore  = gameBlock.querySelector('div.liveScore')
+const game       = gameBlock.querySelector('div.game')
+const beforeGame = game.querySelector('div.beforeGame')
+const btnPlay    = beforeGame.querySelector('button.btnPlay')
+
+// Quand on clique sur jouer
+btnPlay.addEventListener('click', function() {
+    //btnPlay.style.display = 'none'
+    //countdown()
+    
+    beforeGame.style.display = 'none'
+})
+
+/** fin refonte */
+
+/*var blockGame  = document.getElementById('block-game')
 var titre      = blockGame.querySelector('h1')
-var btnPlay    = blockGame.querySelector('.btnPlay')
+//var btnPlay    = blockGame.querySelector('.btnPlay')
 var answers    = blockGame.querySelector('#answers')
-var liveScore  = document.getElementById('liveScore')
+//var liveScore  = document.getElementById('liveScore')
 var result     = document.getElementById('result')
 var playAGain  = document.getElementById('playAgain')
 var goodAnswer = document.getElementById('goodAnswer')
 var resultTime = document.getElementById('time')
-var stats      = document.getElementById('stats')
+var stats      = document.getElementById('stats')*/
 
-var data = [
-    { 'Pays': 'Albanie', 'Capitale': 'Tirana', },
-    { 'Pays': 'Allemagne', 'Capitale': 'Berlin', },
-    { 'Pays': 'Angleterre', 'Capitale': 'Londres', },
-    { 'Pays': 'Autriche', 'Capitale': 'Vienne', },
-    { 'Pays': 'Belgique', 'Capitale': 'Bruxelles', },
-    { 'Pays': 'Bulgarie', 'Capitale': 'Sofia', },
-    { 'Pays': 'Chypre', 'Capitale': 'Nicosie', },
-    { 'Pays': 'Croatie', 'Capitale': 'Zagreb', },
-    { 'Pays': 'Danemark', 'Capitale': 'Copenhague', },
-    { 'Pays': 'Espagne', 'Capitale': 'Madrid', },
-    { 'Pays': 'Estonie', 'Capitale': 'Tallinn', },
-    { 'Pays': 'Finlande', 'Capitale': 'Helsinki', },
-    { 'Pays': 'France', 'Capitale': 'Paris', },
-    { 'Pays': 'Grèce', 'Capitale': 'Athènes', },
-    { 'Pays': 'Hongrie', 'Capitale': 'Budapest', },
-    { 'Pays': 'Irlande', 'Capitale': 'Dublin', },
-    { 'Pays': 'Italie', 'Capitale': 'Rome', },
-    { 'Pays': 'Leichtenstein', 'Capitale': 'Vaduz', },
-    { 'Pays': 'Lettonie', 'Capitale': 'Riga', },
-    { 'Pays': 'Lituanie', 'Capitale': 'Vilnius', },
-    { 'Pays': 'Luxembourg', 'Capitale': 'Luxembourg', },
-    { 'Pays': 'Malte', 'Capitale': 'La Valette', },
-    { 'Pays': 'Monaco', 'Capitale': 'Monaco', },
-    { 'Pays': 'Norvège', 'Capitale': 'Oslo', },
-    { 'Pays': 'Pays-Bas', 'Capitale': 'Amsterdam', },
-    { 'Pays': 'Pologne', 'Capitale': 'Varsovie', },
-    { 'Pays': 'Portugal', 'Capitale': 'Lisbonne', },
-    { 'Pays': 'République tchèque', 'Capitale': 'Prague', },
-    { 'Pays': 'Roumanie', 'Capitale': 'Bucarest', },
-    { 'Pays': 'Serbie', 'Capitale': 'Belgrade', },
-    { 'Pays': 'Slovaquie', 'Capitale': 'Bratislava', },
-    { 'Pays': 'Slovénie', 'Capitale': 'Ljubjana', },
-    { 'Pays': 'Suède', 'Capitale': 'Stockholm', },
-    { 'Pays': 'Suisse', 'Capitale': 'Berne', },
-    { 'Pays': 'Ukraine', 'Capitale': 'Kiev', },
-]
-
-var score             = 0
+/*var score             = 0
 var nbQuestionsGaming = 0
 var nbMaxQuestions    = 6
 var time              = 1
@@ -202,4 +183,4 @@ spans.forEach((span) => {
 
         newQuestion()
     })
-})
+})*/

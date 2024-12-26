@@ -7,26 +7,13 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-a {
-    text-decoration: none;
-    color: #F5F5F5;
-}
-
 h1 {
-    font-family: 'Montserrat', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 30px;
     text-align: center;
     color: #F5F5F5;
     margin-top: 30px;
-}
-
-main {
-    background-image: url("../../assets/img/background_index.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: calc(100vh - 102px);
 }
 
 #country {
@@ -48,7 +35,6 @@ main {
             flex-direction: column;
 
             span {
-                font-family: 'Montserrat', sans-serif;
                 font-style: normal;
                 font-weight: 500;
                 font-size: 18px;
@@ -58,43 +44,6 @@ main {
         }
     }
 }
-
-/*#toto {
-    width: 950px;
-    height: 550px;
-    background-color: #0a3622;
-    margin: 25px auto 25px auto;
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-
-    #liveScore {
-        display: flex;
-        justify-content: end;
-
-        span {
-            margin-right: 50px;
-            color: #F5F5F5;
-            font-size: 26px;
-            margin-top: 10px;
-        }
-    }
-}
-
-#stats {
-    margin-left: 10px;
-    margin-top: 10px;
-    color: #F5F5F5;
-
-    display: flex;
-    justify-content: space-between;
-
-    div {
-        &:nth-child(2) {
-            margin-right: 10px;
-        }
-    }
-}*/
 
 div.gameBackground {
     background-image: url("../../assets/img/background_gaming.svg");
@@ -121,11 +70,13 @@ div.gameBackground {
 
         div.game {
             background-color: #3e3efc;
-            height: calc(100% - 100px);
             padding: 10px;
             border-radius: 15px;
 
             div.beforeGame {
+                background-color: blue;
+                height: 400px;
+
                 div.stats {
                     color: #F5F5F5;
                     display: flex;
@@ -184,150 +135,13 @@ div.gameBackground {
                     color: #363636;
                 }
             }
+
+            div.otherStats {
+                color: #F5F5F5;
+                margin-top: 5px;
+                display: flex;
+                justify-content: space-between;
+            }
         }
     }
 }
-
-/*#gaming #block-game {
-    width: 850px;
-    height: 450px;
-    background-color: #2b76b9;
-    margin: 25px auto 25px auto;
-    border-radius: 10px;
-    opacity: 0.92;
-    padding: 1px;
-}
-
-#gaming #block-game h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 50px;
-    text-align: center;
-    color: #F5F5F5;
-    margin-top: 40px;
-
-    span {
-        font-size: 55px;
-        font-weight: 800;
-    }
-}
-
-#gaming #block-game .btnPlay {
-    width: 200px;
-    height: 70px;
-    background: #281A31;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 100px auto 0 auto;
-    cursor: pointer;
-    transition: 0.3s all;
-}
-
-#gaming #block-game .btnPlay:hover {
-    background-color: #220b30;
-}
-
-#gaming #block-game .btnPlay span {
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 35px;
-    text-align: center;
-    color: #72C4FF;
-}
-
-#gaming #block-game #answers {
-    width: 80%;
-    margin: 60px auto 0 auto;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-#gaming #block-game #answers span {
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 25px;
-    text-align: center;
-    color: #F5F5F5;
-    width: 45%;
-    background-color: #0d326a;
-    margin: 10px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 15px;
-    cursor: pointer;
-}
-
-#gaming #block-game #answers span:hover {
-    background-color: #123d81;
-}
-
-#gaming #result {
-    display: none;
-}
-
-#gaming #block-game #liveScore {
-    font-family: 'Montserrat', sans-serif;
-    color: #F5F5F5;
-    text-align: center;
-    display: none;
-    margin-top: 40px;
-}
-
-#gaming #block-game #playAgain {
-    display: none;
-    width: 200px;
-    height: 70px;
-    background-color: #281A31;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-    margin: 80px auto 20px auto;
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 35px;
-    text-align: center;
-    color: #72C4FF;
-    transition: 0.3s all;
-}
-
-#gaming #block-game #playAgain:hover {
-    cursor: pointer;
-    background-color: #220b30;
-}
-
-#gaming #block-game #time {
-    display: none;
-    text-align: center;
-    margin-top: 15px;
-    color: #F5F5F5;
-    font-family: 'Montserrat', sans-serif;
-}
-
-#gaming #block-game #goodAnswer {
-    display: none;
-    color: green;
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-
-    animation-name: example;
-    animation-duration: 0.4s;
-}
-
-@keyframes example {
-    from {
-        margin-left: -20px;
-    }
-    to {
-        margin-left: 10px;
-    }
-}*/

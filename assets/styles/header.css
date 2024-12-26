@@ -11,23 +11,21 @@ header {
     }
 
     nav a {
-        font-family: 'Montserrat', sans-serif;
         font-style: normal;
         font-weight: 600;
         font-size: 22px;
         margin: 10px;
+        text-decoration: none;
+        color: #F5F5F5;
     }
 
     #profil {
-        /*background-color: red;*/
         margin-right: 50px;
 
         a {
             display: flex;
             justify-content: center;
             align-items: center;
-            /*height: 50px;
-            width: 50px;*/
 
             img {
                 height: 40px;
