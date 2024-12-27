@@ -15,6 +15,8 @@
 
     <h1>Inscription</h1>
 
+    <div style="color: red;">{{ form_errors(registrationForm) }}</div>
+
     <form class="register" name="registration_form" method="post">
         <div class="line">
             <label for="registration_form_email" class="required">Adresse mail</label>
@@ -24,9 +26,11 @@
             <label for="registration_form_plainPassword" class="required">Mot de passe</label>
             <input type="password" id="registration_form_plainPassword" name="registration_form[plainPassword]" required autocomplete="new-password">
         </div>
+        {{ form_row(registrationForm._token) }}
         <div class="line">
-            <label for="registration_form_agreeTerms">Accepter les conditions</label>
-            <input type="checkbox" id="registration_form_agreeTerms" name="registration_form[agreeTerms]" required value="1">
+            <label>
+                <input type="checkbox" name="registration_form[agreeTerms]" required value="1"> Accepter les conditions
+            </label>
         </div>
         <button class="submit" type="submit">S'inscrire</button>
     </form>
