@@ -12,32 +12,29 @@
     <div class="profile">
         <h1>Profil</h1>
 
-        <form method="post">
-            <div>
-                <label for="email">Adresse mail</label>
-                <input id="email" type="email" value="{{ app.user.email }}" disabled>
+        {{ form_start(form, {'attr': {'class': 'profile'}}) }}
+        <div class="line">
+            <div class="field">
+                {{ form_label(form.pseudo) }}
+                {{ form_widget(form.pseudo) }}
             </div>
-            <div>
-                <label for="password">Mot de passe</label>
-                <input id="password" type="password" value="********">
+            <div class="field">
+                {{ form_label(form.lastname) }}
+                {{ form_widget(form.lastname) }}
             </div>
-            <div>
-                <label for="pseudo">Pseudo</label>
-                <input id="pseudo" type="text" value="{{ app.user.pseudo }}">
+        </div>
+        <div class="line">
+            <div class="field">
+                {{ form_label(form.firstname) }}
+                {{ form_widget(form.firstname) }}
             </div>
-            <div>
-                <label for="lastname">Nom</label>
-                <input id="lastname" type="text" value="{{ app.user.lastname }}">
+            <div class="field">
+                {{ form_label(form.birthday) }}
+                {{ form_widget(form.birthday) }}
             </div>
-            <div>
-                <label for="firstname">Prénom</label>
-                <input id="firstname" type="text" value="{{ app.user.firstname }}">
-            </div>
-            <div>
-                <label for="birthday">Date de naissance</label>
-                <input id="birthday" type="date" value="{{ app.user.birthday|date('Y-m-d') }}">
-            </div>
-            <button class="submit" type="submit">Mettre à jour</button>
-        </form>
+        </div>
+
+        <button class="submit" type="submit">Mettre à jour</button>
+        {{ form_end(form) }}
     </div>
 {% endblock %}
