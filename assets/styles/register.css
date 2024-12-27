@@ -14,12 +14,21 @@ form {
     border-radius: 20px;
     opacity: 0.9;
 
+    div.error {
+        color: red;
+    }
+
     div.line {
         display: flex;
         flex-direction: column;
 
         &:nth-child(n+2) {
             margin-top: 15px;
+        }
+
+        ul li {
+            list-style-type: none;
+            margin-top: 2px;
         }
     }
 
@@ -33,5 +42,15 @@ form {
         font-size: 18px;
         cursor: pointer;
         color: #F5F5F5;
+    }
+
+    div.alreadyRegistered {
+        margin-top: 30px;
+        text-align: center;
+
+        a {
+            text-decoration: none;
+            color: #296cc9;
+        }
     }
 }

@@ -9,22 +9,24 @@
 {% block body %}
     {% include 'components/header.html.twig' %}
 
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
-
     <h1>Inscription</h1>
 
-    <div style="color: red;">{{ form_errors(registrationForm) }}</div>
-
     <form class="register" name="registration_form" method="post">
+        {% for flash_error in app.flashes('verify_email_error') %}
+            <div class="error" role="alert">{{ flash_error }}</div>
+        {% endfor %}
+
+        <div class="error">{{ form_errors(registrationForm) }}</div>
+
         <div class="line">
             <label for="registration_form_email" class="required">Adresse mail</label>
             <input type="email" id="registration_form_email" name="registration_form[email]" required>
+            <div class="error">{{ form_errors(registrationForm.email) }}</div>
         </div>
         <div class="line">
             <label for="registration_form_plainPassword" class="required">Mot de passe</label>
             <input type="password" id="registration_form_plainPassword" name="registration_form[plainPassword]" required autocomplete="new-password">
+            <div class="error">{{ form_errors(registrationForm.plainPassword) }}</div>
         </div>
         {{ form_row(registrationForm._token) }}
         <div class="line">
@@ -33,5 +35,7 @@
             </label>
         </div>
         <button class="submit" type="submit">S'inscrire</button>
+
+        <div class="alreadyRegistered">Vous avez déjà un compte ? <a href="{{ path('app_login') }}">Connectez-vous !</a></div>
     </form>
 {% endblock %}

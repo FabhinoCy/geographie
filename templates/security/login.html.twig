@@ -37,6 +37,7 @@
             </label>
         </div>
         <button class="submit" type="submit">Se connecter</button>
+
         {% if app.user == false %}
             <div class="createAccount">Vous n'avez pas de compte ? <a href="{{ path('app_register') }}">Inscrivez-vous !</a></div>
         {% endif %}
