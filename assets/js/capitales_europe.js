@@ -13,6 +13,8 @@ let alreadyUsed = []
 
 const gaming       = gameBlock.querySelector('div.gaming')
 const timer        = gaming.querySelector('div.timer')
+const flag         = gaming.querySelector('div.flag')
+console.log(flag)
 const question     = gaming.querySelector('p.question')
 const pronom       = question.querySelector('span.pronom')
 const paysQuestion = question.querySelector('span.pays')
@@ -113,6 +115,8 @@ function newQuestion() {
         endGame()
         return
     }
+
+    console.log(random)
 
     pronom.textContent       = random.Pronom
     paysQuestion.textContent = random.Pays
