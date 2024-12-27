@@ -6,24 +6,31 @@ body {
     padding: 1px;
 }
 
-h1 {
-
-}
-
 form.login {
     padding: 20px;
     background-color: #F5F5F5;
-    width: 60%;
-    margin: 30px auto 0 auto;
+    width: 50%;
+    margin: 50px auto 0 auto;
     border-radius: 20px;
-    opacity: 0.85;
+    opacity: 0.9;
 
-    div {
+    div.error {
+        color: red;
+    }
+
+    div.alreadyLogged {
+        a {
+            color: #296cc9;
+            text-decoration: none;
+        }
+    }
+
+    div.line {
         display: flex;
         flex-direction: column;
 
         &:nth-child(n+2) {
-            margin-top: 10px;
+            margin-top: 15px;
         }
     }
 
@@ -31,10 +38,21 @@ form.login {
         border: none;
         display: block;
         margin: 20px auto 0 auto;
-        background-color: #969696;
+        background-color: #296cc9;
         padding: 8px 16px;
         border-radius: 10px;
         font-size: 18px;
         cursor: pointer;
+        color: #F5F5F5;
+    }
+
+    div.createAccount {
+        margin-top: 30px;
+        text-align: center;
+
+        a {
+            text-decoration: none;
+            color: #296cc9;
+        }
     }
 }

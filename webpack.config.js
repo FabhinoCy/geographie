@@ -24,6 +24,7 @@ Encore
     .addEntry('capitales_europe', './assets/js/capitales_europe.js')
 
     .addStyleEntry('login', './assets/styles/login.css')
+    .addStyleEntry('register', './assets/styles/register.css')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
