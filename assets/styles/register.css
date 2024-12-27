@@ -6,7 +6,7 @@ body {
     padding: 1px;
 }
 
-form.login {
+form {
     padding: 20px;
     background-color: #F5F5F5;
     width: 50%;
@@ -18,19 +18,17 @@ form.login {
         color: red;
     }
 
-    div.alreadyLogged {
-        a {
-            color: #296cc9;
-            text-decoration: none;
-        }
-    }
-
     div.line {
         display: flex;
         flex-direction: column;
 
         &:nth-child(n+2) {
             margin-top: 15px;
+        }
+
+        ul li {
+            list-style-type: none;
+            margin-top: 2px;
         }
     }
 
@@ -46,7 +44,7 @@ form.login {
         color: #F5F5F5;
     }
 
-    div.createAccount {
+    div.alreadyRegistered {
         margin-top: 30px;
         text-align: center;
 

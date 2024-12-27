@@ -13,7 +13,7 @@
 
     <form class="login" method="post">
         {% if error %}
-            <div class="">Mauvais identifiants</div>
+            <div class="error">Mauvais identifiants</div>
         {% endif %}
 
         <div class="alreadyLogged">
@@ -22,20 +22,24 @@
             {% endif %}
         </div>
 
-        <div>
-            <label for="inputEmail">Email</label>
+        <div class="line">
+            <label for="inputEmail">Adresse mail</label>
             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="" autocomplete="email" required autofocus>
         </div>
-        <div>
-            <label for="inputPassword">Password</label>
+        <div class="line">
+            <label for="inputPassword">Mot de passe</label>
             <input type="password" name="password" id="inputPassword" class="" autocomplete="current-password" required>
         </div>
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-        <div class="checkbox">
+        <div class="line">
             <label>
-                <input type="checkbox" name="_remember_me"> Remember me
+                <input type="checkbox" name="_remember_me"> Se souvenir de moi
             </label>
         </div>
         <button class="submit" type="submit">Se connecter</button>
+
+        {% if app.user == false %}
+            <div class="createAccount">Vous n'avez pas de compte ? <a href="{{ path('app_register') }}">Inscrivez-vous !</a></div>
+        {% endif %}
     </form>
 {% endblock %}
