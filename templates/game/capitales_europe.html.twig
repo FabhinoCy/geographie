@@ -42,16 +42,16 @@
                 </div>
                 <div class="countdown"></div>
                 <div class="gaming">
-                    <img class="test" src="" alt="test">
                     <div class="timer"></div>
-                    <div class="flag">
-                        <img src="{{ asset('img/flags/europe/albanie.png') }}">
-                        <img src="{{ absolute_url(asset('img/flags/europe/albanie.png')) }}">
+                    <div class="questionBox">
+                        <div class="flag">
+                            <img src="" alt="flag">
+                        </div>
+                        <p class="question">
+                            Quelle est la capitale<br>
+                            <span class="pronom"></span><span class="pays"></span> ?
+                        </p>
                     </div>
-                    <p class="question">
-                        Quelle est la capitale<br>
-                        <span class="pronom"></span><span class="pays"></span> ?
-                    </p>
                     <div class="answers">
                         <div class="answer"></div>
                         <div class="answer"></div>
@@ -117,8 +117,8 @@
             };
 
             function setImage(pays) {
-                const test = document.querySelector('img.test')
-                test.src   = flagPaths[pays]
+                const flag = document.querySelector('div.flag img')
+                flag.src   = flagPaths[pays]
             }
         </script>
 

@@ -13,8 +13,6 @@ let alreadyUsed = []
 
 const gaming       = gameBlock.querySelector('div.gaming')
 const timer        = gaming.querySelector('div.timer')
-const flag         = gaming.querySelector('div.flag')
-console.log(flag)
 const question     = gaming.querySelector('p.question')
 const pronom       = question.querySelector('span.pronom')
 const paysQuestion = question.querySelector('span.pays')
@@ -68,12 +66,6 @@ function endGame() {
     }
 
     axios.post('/game/save', data)
-        .then((res) => {
-
-        })
-        .catch((err) => {
-
-        })
 }
 
 function displayCountdown() {
