@@ -211,7 +211,6 @@ playAgain.addEventListener('click', function() {
 function scoreboard() {
     axios.get('/game/scoreboard/capitales-europe')
         .then(res => {
-            console.log(res)
             rankings.innerHTML = res.data
         })
 }
