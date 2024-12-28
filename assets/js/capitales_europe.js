@@ -119,7 +119,7 @@ function newQuestion() {
     pronom.textContent       = random.Pronom
     paysQuestion.textContent = random.Pays
 
-    test(random.Pays)
+    setImage(random.Pays)
 
     var displayAnswers = [random]
     alreadyUsed.push(random.Pays)
