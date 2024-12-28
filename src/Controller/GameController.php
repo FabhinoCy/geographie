@@ -38,8 +38,25 @@ class GameController extends AbstractController
         ]);
     }
 
+    /**
+     * @throws \Exception
+     */
+    #[Route('scoreboard/{type}', name: 'scoreboard')]
+    public function scoreboard(string $type, GameRepository $gameRepository): Response
+    {
+        $month = $gameRepository->findBestScoresOfMonth('month');
+        $week  = $gameRepository->findBestScoresOfMonth('week');
+        $day   = $gameRepository->findBestScoresOfMonth('day');
+
+        return $this->render('game/rankings.html.twig', [
+            'monthBestScores' => $month,
+            'weekBestScores'  => $week,
+            'dayBestScores'   => $day,
+        ]);
+    }
+
     #[Route('save', name: 'save', methods: 'post')]
-    public function save(Request $request, EntityManagerInterface $entityManager)
+    public function save(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
         $data = $request->getContent();

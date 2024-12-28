@@ -16,28 +16,28 @@ class GameRepository extends ServiceEntityRepository
         parent::__construct($registry, Game::class);
     }
 
-    //    /**
-    //     * @return Game[] Returns an array of Game objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('g')
-    //            ->andWhere('g.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('g.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
-
-    //    public function findOneBySomeField($value): ?Game
-    //    {
-    //        return $this->createQueryBuilder('g')
-    //            ->andWhere('g.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    /**
+     * @throws \Exception
+     */
+    public function findBestScoresOfMonth(string $period)
+    {
+        return $this->createQueryBuilder('game')
+            ->select('game')
+            ->innerJoin('game.user', 'user')
+            ->where('game.type = :type')
+            ->andWhere('game.createdAt BETWEEN :startDate AND :endDate')
+            ->andWhere('game.user IS NOT NULL')
+            ->andWhere('game.result = (
+                SELECT MAX(g2.result)
+                FROM App\Entity\Game g2
+                WHERE g2.user = game.user
+            )')
+            ->setParameter('type', 'capitales-europe')
+            ->setParameter('startDate', new \DateTime('-1 ' . $period))
+            ->setParameter('endDate', new \DateTime())
+            ->setMaxResults(25)
+            ->orderBy('game.result', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }

@@ -31,6 +31,8 @@ const resultTime       = result.querySelector('span.time')
 const resultFinalScore = result.querySelector('span.finalScore')
 const playAgain        = result.querySelector('button.playAgain')
 
+const rankings = document.querySelector('div.rankings')
+
 btnPlay.addEventListener('click', displayCountdown)
 
 function setTimer() {
@@ -73,6 +75,9 @@ function endGame() {
     }
 
     axios.post('/game/save', data)
+        .then(() => {
+            scoreboard()
+        })
 }
 
 function displayCountdown() {
@@ -202,3 +207,13 @@ playAgain.addEventListener('click', function() {
     nbQuestionsGaming        = 0
     nbMaxQuestions           = 20
 })
+
+function scoreboard() {
+    axios.get('/game/scoreboard/capitales-europe')
+        .then(res => {
+            console.log(res)
+            rankings.innerHTML = res.data
+        })
+}
+
+scoreboard()
