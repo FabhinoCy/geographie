@@ -13,6 +13,8 @@ let alreadyUsed = []
 
 const gaming       = gameBlock.querySelector('div.gaming')
 const timer        = gaming.querySelector('div.timer')
+const flag         = gaming.querySelector('div.flag')
+console.log(flag)
 const question     = gaming.querySelector('p.question')
 const pronom       = question.querySelector('span.pronom')
 const paysQuestion = question.querySelector('span.pays')
@@ -117,6 +119,8 @@ function newQuestion() {
     pronom.textContent       = random.Pronom
     paysQuestion.textContent = random.Pays
 
+    setImage(random.Pays)
+
     var displayAnswers = [random]
     alreadyUsed.push(random.Pays)
     data.forEach((element) => {
@@ -169,7 +173,7 @@ answers.forEach((answer) => {
             liveScore.textContent = score
             answerIsCorrect       = true
         } else {
-            nbSeconds -= 5
+            //nbSeconds -= 5
         }
 
         updateCounter(answerIsCorrect)

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Geographie - Profil{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('profile') }}
+{% endblock %}
+
+{% block body %}
+    {% include 'components/header.html.twig' %}
+
+    <div class="profile">
+        <h1>Profil</h1>
+
+        {{ form_start(form, {'attr': {'class': 'profile'}}) }}
+        <div class="line">
+            <div class="field">
+                {{ form_label(form.pseudo) }}
+                {{ form_widget(form.pseudo) }}
+            </div>
+            <div class="field">
+                {{ form_label(form.lastname) }}
+                {{ form_widget(form.lastname) }}
+            </div>
+        </div>
+        <div class="line">
+            <div class="field">
+                {{ form_label(form.firstname) }}
+                {{ form_widget(form.firstname) }}
+            </div>
+            <div class="field">
+                {{ form_label(form.birthday) }}
+                {{ form_widget(form.birthday) }}
+            </div>
+        </div>
+
+        <button class="submit" type="submit">Mettre à jour</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

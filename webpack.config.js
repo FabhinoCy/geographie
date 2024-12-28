@@ -25,6 +25,7 @@ Encore
 
     .addStyleEntry('login', './assets/styles/login.css')
     .addStyleEntry('register', './assets/styles/register.css')
+    .addStyleEntry('profile', './assets/styles/profile.css')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -56,6 +57,8 @@ Encore
         config.useBuiltIns = 'usage';
         config.corejs = '3.38';
     })
+
+    .enableVersioning()
 
     // enables Sass/SCSS support
     //.enableSassLoader()
