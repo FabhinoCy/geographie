@@ -116,10 +116,10 @@ function newQuestion() {
         return
     }
 
-    console.log(random)
-
     pronom.textContent       = random.Pronom
     paysQuestion.textContent = random.Pays
+
+    test(random.Pays)
 
     var displayAnswers = [random]
     alreadyUsed.push(random.Pays)
@@ -173,7 +173,7 @@ answers.forEach((answer) => {
             liveScore.textContent = score
             answerIsCorrect       = true
         } else {
-            nbSeconds -= 5
+            //nbSeconds -= 5
         }
 
         updateCounter(answerIsCorrect)

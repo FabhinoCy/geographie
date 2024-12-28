@@ -42,8 +42,12 @@
                 </div>
                 <div class="countdown"></div>
                 <div class="gaming">
+                    <img class="test" src="" alt="test">
                     <div class="timer"></div>
-                    <div class="flag"></div>
+                    <div class="flag">
+                        <img src="{{ asset('img/flags/europe/albanie.png') }}">
+                        <img src="{{ absolute_url(asset('img/flags/europe/albanie.png')) }}">
+                    </div>
                     <p class="question">
                         Quelle est la capitale<br>
                         <span class="pronom"></span><span class="pays"></span> ?
@@ -73,6 +77,51 @@
     </div>
 
     {% block javascripts %}
+        <script>
+            var flagPaths = {
+                'Albanie'           : "{{ asset('img/flags/europe/albanie.png') }}",
+                'Allemagne'         : "{{ asset('img/flags/europe/allemagne.png') }}",
+                'Angleterre'        : "{{ asset('img/flags/europe/angleterre.png') }}",
+                'Autriche'          : "{{ asset('img/flags/europe/autriche.png') }}",
+                'Belgique'          : "{{ asset('img/flags/europe/belgique.png') }}",
+                'Bulgarie'          : "{{ asset('img/flags/europe/bulgarie.png') }}",
+                'Chypre'            : "{{ asset('img/flags/europe/chypre.png') }}",
+                'Croatie'           : "{{ asset('img/flags/europe/croatie.png') }}",
+                'Danemark'          : "{{ asset('img/flags/europe/danemark.png') }}",
+                'Espagne'           : "{{ asset('img/flags/europe/espagne.png') }}",
+                'Estonie'           : "{{ asset('img/flags/europe/estonie.png') }}",
+                'Finlande'          : "{{ asset('img/flags/europe/finlande.png') }}",
+                'France'            : "{{ asset('img/flags/europe/france.png') }}",
+                'Grèce'             : "{{ asset('img/flags/europe/grece.png') }}",
+                'Hongrie'           : "{{ asset('img/flags/europe/hongrie.png') }}",
+                'Irlande'           : "{{ asset('img/flags/europe/irlande.png') }}",
+                'Italie'            : "{{ asset('img/flags/europe/italie.png') }}",
+                'Liechtenstein'     : "{{ asset('img/flags/europe/liechtenstein.png') }}",
+                'Lettonie'          : "{{ asset('img/flags/europe/lettonie.png') }}",
+                'Lituanie'          : "{{ asset('img/flags/europe/lituanie.png') }}",
+                'Luxembourg'        : "{{ asset('img/flags/europe/luxembourg.png') }}",
+                'Malte'             : "{{ asset('img/flags/europe/malte.png') }}",
+                'Monaco'            : "{{ asset('img/flags/europe/monaco.png') }}",
+                'Norvège'           : "{{ asset('img/flags/europe/norvege.png') }}",
+                'Pays-Bas'          : "{{ asset('img/flags/europe/pays_bas.png') }}",
+                'Pologne'           : "{{ asset('img/flags/europe/pologne.png') }}",
+                'Portugal'          : "{{ asset('img/flags/europe/portugal.png') }}",
+                'République tchèque': "{{ asset('img/flags/europe/republique_tcheque.png') }}",
+                'Roumanie'          : "{{ asset('img/flags/europe/roumanie.png') }}",
+                'Serbie'            : "{{ asset('img/flags/europe/serbie.png') }}",
+                'Slovaquie'         : "{{ asset('img/flags/europe/slovaquie.png') }}",
+                'Slovénie'          : "{{ asset('img/flags/europe/slovenie.png') }}",
+                'Suède'             : "{{ asset('img/flags/europe/suede.png') }}",
+                'Suisse'            : "{{ asset('img/flags/europe/suisse.png') }}",
+                'Ukraine'           : "{{ asset('img/flags/europe/ukraine.png') }}",
+            };
+
+            function test(pays) {
+                const test = document.querySelector('img.test')
+                test.src   = flagPaths[pays]
+            }
+        </script>
+
         {{ encore_entry_script_tags('capitales_europe') }}
     {% endblock %}
 {% endblock %}
