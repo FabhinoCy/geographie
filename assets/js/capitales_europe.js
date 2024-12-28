@@ -25,8 +25,11 @@ let nbMaxQuestions    = 20
 let nbSeconds         = 60
 let quizIsFinished    = false
 
-const result    = gameBlock.querySelector('div.result')
-const playAgain = result.querySelector('button.playAgain')
+const result           = gameBlock.querySelector('div.result')
+const resultScore      = result.querySelector('span.score')
+const resultTime       = result.querySelector('span.time')
+const resultFinalScore = result.querySelector('span.finalScore')
+const playAgain        = result.querySelector('button.playAgain')
 
 btnPlay.addEventListener('click', displayCountdown)
 
@@ -50,9 +53,13 @@ function setTimer() {
 }
 
 function endGame() {
-    quizIsFinished = true
+    quizIsFinished       = true
     gaming.style.display = 'none'
     result.style.display = 'flex'
+
+    resultScore.innerHTML      = 'Votre score : <span class="big">' + score + '</span>'
+    resultTime.innerHTML       = 'Temps de la partie : <span class="big">' + (60 - nbSeconds) + '</span>s'
+    resultFinalScore.innerHTML = 'Résultat final : <span class="big">' + (nbSeconds * score) + '</span> points'
 
     emptyCounter()
     displayCounter()
@@ -88,7 +95,7 @@ function displayCountdown() {
             newQuestion()
             setTimer()
         }
-    }, 800)
+    }, 80)
 }
 
 function newQuestion() {
@@ -157,15 +164,13 @@ function getRandomPays(data) {
 
 answers.forEach((answer) => {
     answer.addEventListener('click', function() {
-        const pays = answer.getAttribute('data-pays')
+        const pays          = answer.getAttribute('data-pays')
         let answerIsCorrect = false
 
         if (pays === paysQuestion.textContent) {
             score += 500
             liveScore.textContent = score
             answerIsCorrect       = true
-        } else {
-            //nbSeconds -= 5
         }
 
         updateCounter(answerIsCorrect)

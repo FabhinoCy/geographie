@@ -186,7 +186,6 @@ div.gameBackground {
                     p.question {
                         width: 100%;
                         text-align: center;
-                        margin-top: -5px;
                         font-size: 26px;
                         letter-spacing: 0.5px;
 
@@ -246,11 +245,34 @@ div.gameBackground {
                 height: 400px;
                 background-color: #3e3efc;
                 flex-direction: column;
+                color: #F5F5F5;
 
-                h2 {
-                    text-align: center;
+                div.block {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
                     margin-top: 30px;
-                    color: #F5F5F5;
+
+                    div.data {
+                        display: flex;
+                        flex-direction: column;
+
+                        span {
+                            margin-top: 10px;
+                        }
+
+                        span.big {
+                            font-size: 20px;
+                            font-weight: 700;
+                        }
+                    }
+
+                    div.picture {
+                        img {
+                            height: 130px;
+                            object-fit: contain;
+                        }
+                    }
                 }
 
                 button.playAgain {
