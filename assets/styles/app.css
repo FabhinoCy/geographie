@@ -3,9 +3,18 @@
     padding: 0;
 }
 
-body {
+html, body {
+    height: 100%;
+    margin: 0;
+
     font-family: 'Montserrat', sans-serif;
-    background-color: #0a53be;
+}
+
+body {
+    background-image: url("../../assets/img/background_country.svg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 h1 {
@@ -18,18 +27,12 @@ h1 {
 }
 
 #country {
-    background: url("../../assets/img/background_country.svg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-
     #displayGames {
         display: flex;
         justify-content: space-around;
         align-items: center;
         flex-wrap: wrap;
-        margin-top: 40px;
+        margin-top: 50px;
 
         div {
             display: flex;
@@ -47,11 +50,11 @@ h1 {
 }
 
 div.gameBackground {
-    background-image: url("../../assets/img/background_gaming.svg");
+    /*background-image: url("../../assets/img/background_gaming.svg");
     background-repeat: no-repeat;
     background-size: cover;
     height: calc(100vh - 102px);
-    padding: 1px;
+    padding: 1px;*/
 
     div.gameBlock {
         width: 900px;
@@ -301,10 +304,11 @@ div.gameBackground {
     }
 
     div.rankings {
-        margin: 60px auto 0 auto;
+        margin: 60px auto 80px auto;
         width: 90%;
-        background-color: #0a53be;
+        background-color: #063a85;
         padding: 10px;
+        border-radius: 10px;
 
         div.tables {
             display: flex;
@@ -335,8 +339,17 @@ div.gameBackground {
                         align-items: center;
                         background-color: #3982ee;
 
+                        &:nth-child(1) {
+                            border-top-right-radius: 5px;
+                            border-top-left-radius: 5px;
+                        }
+
                         &:nth-child(even) {
                             background-color: #2159af;
+                        }
+
+                        &.me {
+                            background-color: green;
                         }
 
                         span.spot {

@@ -16,5 +16,10 @@
         <a href="{{ path('app_profil') }}">
             <img src="{{ asset('img/profil.svg') }}" alt="profil">
         </a>
+        {% if app.user %}
+            <a href="{{ path('app_logout') }}">
+                <img src="{{ asset('img/logout.svg') }}" alt="logout">
+            </a>
+        {% endif %}
     </div>
 </header>
