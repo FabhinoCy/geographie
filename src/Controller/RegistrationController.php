@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,10 +19,16 @@ use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
 class RegistrationController extends AbstractController
 {
-    public function __construct(private EmailVerifier $emailVerifier)
+    private EmailVerifier $emailVerifier;
+
+    public function __construct(EmailVerifier $emailVerifier)
     {
+        $this->emailVerifier = $emailVerifier;
     }
 
+    /**
+     * @throws Exception
+     */
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
@@ -33,12 +40,17 @@ class RegistrationController extends AbstractController
             /** @var string $plainPassword */
             $plainPassword = $form->get('plainPassword')->getData();
 
+            $birthday = $form->get('birthday')->getData(); // Cela vous donne un objet DateTime
+            if ($birthday instanceof \DateTime) {
+                $birthdayImmutable = \DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $birthday->format('Y-m-d H:i:s'));
+                $user->setBirthday($birthdayImmutable);
+            }
+
             // encode the plain password
             $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword))
-                ->setPseudo('')
-                ->setLastname('')
-                ->setFirstname('')
-                ->setBirthday(new \DateTimeImmutable('2000-01-01 12:00:00'));
+                ->setPseudo($form->get('pseudo')->getData())
+                ->setLastname($form->get('lastname')->getData())
+                ->setFirstname($form->get('firstname')->getData());
 
             $entityManager->persist($user);
             $entityManager->flush();
