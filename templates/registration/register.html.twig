@@ -11,31 +11,48 @@
 
     <h1>Inscription</h1>
 
-    <form class="register" name="registration_form" method="post">
-        {% for flash_error in app.flashes('verify_email_error') %}
-            <div class="error" role="alert">{{ flash_error }}</div>
-        {% endfor %}
+    {{ form_start(registrationForm) }}
 
-        <div class="error">{{ form_errors(registrationForm) }}</div>
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="error" role="alert">{{ flash_error }}</div>
+    {% endfor %}
 
-        <div class="line">
-            <label for="registration_form_email" class="required">Adresse mail</label>
-            <input type="email" id="registration_form_email" name="registration_form[email]" required>
-            <div class="error">{{ form_errors(registrationForm.email) }}</div>
-        </div>
-        <div class="line">
-            <label for="registration_form_plainPassword" class="required">Mot de passe</label>
-            <input type="password" id="registration_form_plainPassword" name="registration_form[plainPassword]" required autocomplete="new-password">
-            <div class="error">{{ form_errors(registrationForm.plainPassword) }}</div>
-        </div>
-        {{ form_row(registrationForm._token) }}
-        <div class="line">
-            <label>
-                <input type="checkbox" name="registration_form[agreeTerms]" required value="1"> Accepter les conditions
-            </label>
-        </div>
-        <button class="submit" type="submit">S'inscrire</button>
+    <div class="error">{{ form_errors(registrationForm) }}</div>
 
-        <div class="alreadyRegistered">Vous avez déjà un compte ? <a href="{{ path('app_login') }}">Connectez-vous !</a></div>
-    </form>
+    <div class="line">
+        {{ form_label(registrationForm.email) }}
+        {{ form_widget(registrationForm.email) }}
+    </div>
+    <div class="line">
+        {{ form_label(registrationForm.plainPassword) }}
+        {{ form_widget(registrationForm.plainPassword) }}
+    </div>
+    <div class="line">
+        {{ form_label(registrationForm.pseudo) }}
+        {{ form_widget(registrationForm.pseudo) }}
+    </div>
+    <div class="line">
+        {{ form_label(registrationForm.lastname) }}
+        {{ form_widget(registrationForm.lastname) }}
+    </div>
+    <div class="line">
+        {{ form_label(registrationForm.firstname) }}
+        {{ form_widget(registrationForm.firstname) }}
+    </div>
+    <div class="line">
+        {{ form_label(registrationForm.birthday) }}
+        {{ form_widget(registrationForm.birthday) }}
+    </div>
+    <div class="line">
+        <label>
+            <input type="checkbox" name="registration_form[agreeTerms]" required value="1"> Accepter les conditions
+        </label>
+    </div>
+
+    {{ form_row(registrationForm._token) }}
+    <button class="submit" type="submit">S'inscrire</button>
+
+    <div class="alreadyRegistered">Vous avez déjà un compte ? <a href="{{ path('app_login') }}">Connectez-vous !</a></div>
+
+    {{ form_end(registrationForm, {'render_rest': false}) }}
 {% endblock %}
