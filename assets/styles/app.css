@@ -301,9 +301,10 @@ div.gameBackground {
     }
 
     div.rankings {
-        margin: 50px auto 0 auto;
+        margin: 60px auto 0 auto;
         width: 90%;
         background-color: #0a53be;
+        padding: 10px;
 
         div.tables {
             display: flex;
@@ -314,21 +315,28 @@ div.gameBackground {
                 width: 30%;
 
                 h3 {
-                    background-color: red;
+                    background-color: #3982ee;
+                    height: 35px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 5px;
+                    color: #F5F5F5;
                 }
 
                 div.table {
                     margin-top: 10px;
+                    color: #F5F5F5;
 
                     div.line {
                         height: 40px;
                         display: flex;
                         justify-content: space-between;
                         align-items: center;
-                        background-color: orangered;
+                        background-color: #3982ee;
 
                         &:nth-child(even) {
-                            background-color: orange;
+                            background-color: #2159af;
                         }
 
                         span.spot {
@@ -345,6 +353,7 @@ div.gameBackground {
                             width: 80px;
                             display: flex;
                             justify-content: end;
+                            margin-right: 3px;
                         }
                     }
                 }
