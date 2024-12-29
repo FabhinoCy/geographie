@@ -47,6 +47,14 @@ div.profile {
                     padding: 5px;
                     border-radius: 5px;
                 }
+
+                ul {
+                    color: red;
+
+                    li {
+                        list-style-type: none;
+                    }
+                }
             }
         }
 

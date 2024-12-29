@@ -33,7 +33,7 @@ class ProfilController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_profil');
         }
 
         return $this->render('profil/index.html.twig', [
