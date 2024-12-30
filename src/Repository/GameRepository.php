@@ -19,7 +19,7 @@ class GameRepository extends ServiceEntityRepository
     /**
      * @throws \Exception
      */
-    public function findBestScoresOfMonth(string $period)
+    public function findBestScoresOfMonth(string $type, string $period)
     {
         return $this->createQueryBuilder('game')
             ->select('game')
@@ -32,7 +32,7 @@ class GameRepository extends ServiceEntityRepository
                 FROM App\Entity\Game g2
                 WHERE g2.user = game.user
             )')
-            ->setParameter('type', 'capitales-europe')
+            ->setParameter('type', $type)
             ->setParameter('startDate', new \DateTime('-1 ' . $period))
             ->setParameter('endDate', new \DateTime())
             ->setMaxResults(25)

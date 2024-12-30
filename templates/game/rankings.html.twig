@@ -4,7 +4,7 @@
         <h3>Du mois</h3>
         <div class="table">
             {% for key, game in monthBestScores %}
-                <div class="line{% if app.user.pseudo == game.user.pseudo %} me{% endif %}">
+                <div class="line{% if app.user is not null and app.user.pseudo == game.user.pseudo %} me{% endif %}">
                     <span class="spot">{{ key + 1 }}</span>
                     <span class="name">{{ game.user.pseudo }}</span>
                     <span class="score">{{ game.result }}</span>
@@ -16,7 +16,7 @@
         <h3>De la semaine</h3>
         <div class="table">
             {% for key, game in weekBestScores %}
-                <div class="line{% if app.user.pseudo == game.user.pseudo %} me{% endif %}">
+                <div class="line{% if app.user is not null and app.user.pseudo == game.user.pseudo %} me{% endif %}">
                     <span class="spot">{{ key + 1 }}</span>
                     <span class="name">{{ game.user.pseudo }}</span>
                     <span class="score">{{ game.result }}</span>
@@ -28,7 +28,7 @@
         <h3>Du jour</h3>
         <div class="table">
             {% for key, game in dayBestScores %}
-                <div class="line{% if app.user.pseudo == game.user.pseudo %} me{% endif %}">
+                <div class="line{% if app.user is not null and app.user.pseudo == game.user.pseudo %} me{% endif %}">
                     <span class="spot">{{ key + 1 }}</span>
                     <span class="name">{{ game.user.pseudo }}</span>
                     <span class="score">{{ game.result }}</span>

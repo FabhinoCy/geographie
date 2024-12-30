@@ -44,9 +44,9 @@ class GameController extends AbstractController
     #[Route('scoreboard/{type}', name: 'scoreboard')]
     public function scoreboard(string $type, GameRepository $gameRepository): Response
     {
-        $month = $gameRepository->findBestScoresOfMonth('month');
-        $week  = $gameRepository->findBestScoresOfMonth('week');
-        $day   = $gameRepository->findBestScoresOfMonth('day');
+        $month = $gameRepository->findBestScoresOfMonth($type, 'month');
+        $week  = $gameRepository->findBestScoresOfMonth($type, 'week');
+        $day   = $gameRepository->findBestScoresOfMonth($type, 'day');
 
         return $this->render('game/rankings.html.twig', [
             'monthBestScores' => $month,
