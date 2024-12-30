@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Game;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Exception;
 
 /**
  * @extends ServiceEntityRepository<Game>
@@ -17,7 +18,7 @@ class GameRepository extends ServiceEntityRepository
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function findBestScoresOfMonth(string $type, string $period)
     {
@@ -37,6 +38,20 @@ class GameRepository extends ServiceEntityRepository
             ->setParameter('endDate', new \DateTime())
             ->setMaxResults(25)
             ->orderBy('game.result', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findUsersWithTheirBestScore(string $type)
+    {
+        return $this->createQueryBuilder('game')
+            ->innerJoin('game.user', 'u')
+            ->select('u.id AS user_id', 'MAX(game.result) AS max_result')
+            ->where('game.type = :type')
+            ->andWhere('game.user IS NOT NULL')
+            ->setParameter('type', $type)
+            ->groupBy('u.id')
+            ->orderBy('max_result', 'DESC')
             ->getQuery()
             ->getResult();
     }

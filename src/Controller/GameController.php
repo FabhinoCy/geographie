@@ -18,24 +18,8 @@ class GameController extends AbstractController
     #[Route('capitales-europe', name: 'capitales_europe')]
     public function capitalesEurope(GameRepository $gameRepository): Response
     {
-        $nbGames   = count($gameRepository->findBy(['type' => 'capitales-europe']));
-
-        $bestScore = 'X';
-
-        if ($this->getUser() instanceof User) {
-            $games     = $gameRepository->findBy(['type' => 'capitales-europe', 'user' => $this->getUser()]);
-            $bestScore = 0;
-
-            foreach ($games as $game) {
-                if ($game->getResult() > $bestScore) {
-                    $bestScore = $game->getResult();
-                }
-            }
-        }
-
         return $this->render('game/capitales_europe.html.twig', [
-            'nbGames'   => $nbGames,
-            'bestScore' => $bestScore,
+            'nbGames' => count($gameRepository->findBy(['type' => 'capitales-europe'])),
         ]);
     }
 
@@ -46,25 +30,13 @@ class GameController extends AbstractController
 
         if ($this->getUser() instanceof User) {
             $games = $gameRepository->findBy(['type' => 'capitales-europe', 'user' => $this->getUser()]);
-            $bestScore = 0;
 
-            foreach ($games as $game) {
-                if ($game->getResult() > $bestScore) {
-                    $bestScore = $game->getResult();
-                }
+            if (!empty($games)) {
+                $bestScore = max(array_map(fn($game) => $game->getResult(), $games));
             }
         }
 
-        $allScores = $gameRepository->createQueryBuilder('g')
-            ->innerJoin('g.user', 'u')
-            ->select('u.id AS user_id', 'MAX(g.result) AS max_result')
-            ->where('g.type = :type')
-            ->andWhere('g.user IS NOT NULL')
-            ->setParameter('type', 'capitales-europe')
-            ->groupBy('u.id')
-            ->orderBy('max_result', 'DESC')
-            ->getQuery()
-            ->getResult();
+        $allScores = $gameRepository->findUsersWithTheirBestScore('capitales-europe');
 
         $distinctPlayersCount = count($allScores);
 
@@ -79,7 +51,7 @@ class GameController extends AbstractController
 
         return $this->render('game/other_stats.html.twig', [
             'bestScore'            => $bestScore,
-            'position'             => $position,
+            'position'             => $position > $distinctPlayersCount ? 'x' : $position,
             'distinctPlayersCount' => $distinctPlayersCount
         ]);
     }
