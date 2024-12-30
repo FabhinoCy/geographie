@@ -1,0 +1,6 @@
+{% if app.user %}
+    <p>Meilleur score : {{ bestScore }}</p>
+    <p>Classement : {{ position }} / {{ distinctPlayersCount }}</p>
+{% else %}
+    <p>Connectez-vous pour enregistrer vos scores !</p>
+{% endif %}

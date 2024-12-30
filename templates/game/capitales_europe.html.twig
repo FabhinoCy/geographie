@@ -34,7 +34,6 @@
                                 <img src="{{ asset('img/star2.svg') }}" alt="etoile">
                                 : 22500
                             </div>
-                            <span class="bestScore">Meilleur score : {{ bestScore }}</span>
                         </div>
                     </div>
                     <h1 class="theme">Capitales d'<span>EUROPE</span></h1>
@@ -74,14 +73,7 @@
                     </div>
                     <button class="playAgain">Rejouer</button>
                 </div>
-                <div class="otherStats">
-                    {% if app.user %}
-                        <p>Meilleur score : {{ bestScore }}</p>
-                        <p>Classement : 167 / 83 654</p>
-                        {% else %}
-                            <p>Connectez-vous pour enregistrer vos scores !</p>
-                    {% endif %}
-                </div>
+                <div class="otherStats"></div>
             </div>
         </div>
         <div class="rankings"></div>

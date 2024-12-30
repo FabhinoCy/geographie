@@ -6,6 +6,7 @@ use App\Entity\Game;
 use App\Entity\User;
 use App\Repository\GameRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -34,12 +35,57 @@ class GameController extends AbstractController
 
         return $this->render('game/capitales_europe.html.twig', [
             'nbGames'   => $nbGames,
-            'bestScore' => $bestScore
+            'bestScore' => $bestScore,
+        ]);
+    }
+
+    #[Route('capitales-europe/stats', name: 'capitales_europe_stats')]
+    public function capitalesEuropeStats(GameRepository $gameRepository): Response
+    {
+        $bestScore = 'X';
+
+        if ($this->getUser() instanceof User) {
+            $games = $gameRepository->findBy(['type' => 'capitales-europe', 'user' => $this->getUser()]);
+            $bestScore = 0;
+
+            foreach ($games as $game) {
+                if ($game->getResult() > $bestScore) {
+                    $bestScore = $game->getResult();
+                }
+            }
+        }
+
+        $allScores = $gameRepository->createQueryBuilder('g')
+            ->innerJoin('g.user', 'u')
+            ->select('u.id AS user_id', 'MAX(g.result) AS max_result')
+            ->where('g.type = :type')
+            ->andWhere('g.user IS NOT NULL')
+            ->setParameter('type', 'capitales-europe')
+            ->groupBy('u.id')
+            ->orderBy('max_result', 'DESC')
+            ->getQuery()
+            ->getResult();
+
+        $distinctPlayersCount = count($allScores);
+
+        $position = 1;
+
+        foreach ($allScores as $score) {
+            if ($score['user_id'] == $this->getUser()->getId()) {
+                break;
+            }
+            $position++;
+        }
+
+        return $this->render('game/other_stats.html.twig', [
+            'bestScore'            => $bestScore,
+            'position'             => $position,
+            'distinctPlayersCount' => $distinctPlayersCount
         ]);
     }
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     #[Route('scoreboard/{type}', name: 'scoreboard')]
     public function scoreboard(string $type, GameRepository $gameRepository): Response
