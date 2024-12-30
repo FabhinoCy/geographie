@@ -23,20 +23,20 @@ class GameController extends AbstractController
         ]);
     }
 
-    #[Route('capitales-europe/stats', name: 'capitales_europe_stats')]
-    public function capitalesEuropeStats(GameRepository $gameRepository): Response
+    #[Route('{type}/stats')]
+    public function quizStats(string $type, GameRepository $gameRepository): Response
     {
         $bestScore = 'X';
 
         if ($this->getUser() instanceof User) {
-            $games = $gameRepository->findBy(['type' => 'capitales-europe', 'user' => $this->getUser()]);
+            $games = $gameRepository->findBy(['type' => $type, 'user' => $this->getUser()]);
 
             if (!empty($games)) {
                 $bestScore = max(array_map(fn($game) => $game->getResult(), $games));
             }
         }
 
-        $allScores = $gameRepository->findUsersWithTheirBestScore('capitales-europe');
+        $allScores = $gameRepository->findUsersWithTheirBestScore($type);
 
         $distinctPlayersCount = count($allScores);
 
@@ -59,7 +59,7 @@ class GameController extends AbstractController
     /**
      * @throws Exception
      */
-    #[Route('scoreboard/{type}', name: 'scoreboard')]
+    #[Route('scoreboard/{type}')]
     public function scoreboard(string $type, GameRepository $gameRepository): Response
     {
         $month = $gameRepository->findBestScoresOfMonth($type, 'month');
