@@ -31,6 +31,14 @@ class GameController extends AbstractController
         ]);
     }
 
+    #[Route('capitales-afrique', name: 'capitales_afrique')]
+    public function capitalesAfrique(GameRepository $gameRepository): Response
+    {
+        return $this->render('game/capitales_afrique.html.twig', [
+            'nbGames' => count($gameRepository->findBy(['type' => 'capitales-afrique'])),
+        ]);
+    }
+
     #[Route('{type}/stats')]
     public function quizStats(string $type, GameRepository $gameRepository): Response
     {
