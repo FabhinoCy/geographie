@@ -22,6 +22,7 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addEntry('capitales_europe', './assets/js/capitales_europe.js')
+    .addEntry('capitales_amerique', './assets/js/capitales_amerique.js')
 
     .addStyleEntry('login', './assets/styles/login.css')
     .addStyleEntry('register', './assets/styles/register.css')

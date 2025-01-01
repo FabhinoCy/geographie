@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Capitales d'Amérique{% endblock %}
+
+{% block body %}
+    {% include 'components/header.html.twig' %}
+
+    {{ include ('game/capitales.html.twig', {continent: 'AMERIQUE'}) }}
+
+    {% block javascripts %}
+        <script>
+            var flagPaths = {
+                'Antigua-et-Barbuda'             : "{{ asset('img/flags/amerique/antigua_barbuda.png') }}",
+                'Argentine'                      : "{{ asset('img/flags/amerique/argentine.png') }}",
+                'Bahamas'                        : "{{ asset('img/flags/amerique/bahamas.png') }}",
+                'Barbade'                        : "{{ asset('img/flags/amerique/barbade.png') }}",
+                'Belize'                         : "{{ asset('img/flags/amerique/belize.png') }}",
+                'Bolivie'                        : "{{ asset('img/flags/amerique/bolivie.png') }}",
+                'Brésil'                         : "{{ asset('img/flags/amerique/bresil.png') }}",
+                'Canada'                         : "{{ asset('img/flags/amerique/canada.png') }}",
+                'Chili'                          : "{{ asset('img/flags/amerique/chili.png') }}",
+                'Colombie'                       : "{{ asset('img/flags/amerique/colombie.png') }}",
+                'Costa Rica'                     : "{{ asset('img/flags/amerique/costarica.png') }}",
+                'Cuba'                           : "{{ asset('img/flags/amerique/cuba.png') }}",
+                'Dominique'                      : "{{ asset('img/flags/amerique/dominique.png') }}",
+                'Équateur'                       : "{{ asset('img/flags/amerique/ecuador.png') }}",
+                'Grenade'                        : "{{ asset('img/flags/amerique/grenade.png') }}",
+                'Guatemala'                      : "{{ asset('img/flags/amerique/guatemala.png') }}",
+                'Guyana'                         : "{{ asset('img/flags/amerique/guyana.png') }}",
+                'Haiti'                          : "{{ asset('img/flags/amerique/haiti.png') }}",
+                'Honduras'                       : "{{ asset('img/flags/amerique/honduras.png') }}",
+                'Jamaïque'                       : "{{ asset('img/flags/amerique/jamaique.png') }}",
+                'Mexique'                        : "{{ asset('img/flags/amerique/mexique.png') }}",
+                'Nicaragua'                      : "{{ asset('img/flags/amerique/nicaragua.png') }}",
+                'Panama'                         : "{{ asset('img/flags/amerique/panama.png') }}",
+                'Paraguay'                       : "{{ asset('img/flags/amerique/paraguay.png') }}",
+                'Pérou'                          : "{{ asset('img/flags/amerique/perou.png') }}",
+                'Saint-Vincent-et-les-Grenadines': "{{ asset('img/flags/amerique/saintvincent.png') }}",
+                'Salvador'                       : "{{ asset('img/flags/amerique/salvador.png') }}",
+                'Suriname'                       : "{{ asset('img/flags/amerique/suriname.png') }}",
+                'Trinité-et-Tobago'              : "{{ asset('img/flags/amerique/trinite_tobago.png') }}",
+                'Uruguay'                        : "{{ asset('img/flags/amerique/uruguay.png') }}",
+                'Venezuela'                      : "{{ asset('img/flags/amerique/venezuela.png') }}",
+                'États-Unis'                     : "{{ asset('img/flags/amerique/etats-unis.png') }}",
+            }
+
+            function setImage(pays) {
+                const flag = document.querySelector('div.flag img')
+                flag.src   = flagPaths[pays]
+            }
+        </script>
+
+        {{ encore_entry_script_tags('capitales_amerique') }}
+    {% endblock %}
+{% endblock %}
