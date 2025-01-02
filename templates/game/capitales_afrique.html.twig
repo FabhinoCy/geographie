@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Capitales d'Afrique{% endblock %}
+
+{% block body %}
+    {% include 'components/header.html.twig' %}
+
+    {{ include ('game/capitales.html.twig', {continent: 'AFRIQUE'}) }}
+
+    {% block javascripts %}
+        <script>
+            var flagPaths = {
+                'Afrique du Sud'   : "{{ asset('img/flags/afrique-sud.png') }}",
+                'Algérie'          : "{{ asset('img/flags/algerie.png') }}",
+                'Angola'           : "{{ asset('img/flags/angola.png') }}",
+                'Bénin'            : "{{ asset('img/flags/benin.png') }}",
+                'Botswana'         : "{{ asset('img/flags/botswana.png') }}",
+                'Burkina Faso'     : "{{ asset('img/flags/burkina-faso.png') }}",
+                'Burundi'          : "{{ asset('img/flags/burundi.png') }}",
+                'Cameroun'         : "{{ asset('img/flags/cameroun.png') }}",
+                'Cap-Vert'         : "{{ asset('img/flags/cap-vert.png') }}",
+                'Centrafrique'     : "{{ asset('img/flags/centrafrique.png') }}",
+                'Comores'          : "{{ asset('img/flags/comores.png') }}",
+                'Congo'            : "{{ asset('img/flags/congo.png') }}",
+                'Congo (RDC)'      : "{{ asset('img/flags/congo-rdc.png') }}",
+                'Côte d\'Ivoire'   : "{{ asset('img/flags/cote-ivoire.png') }}",
+                'Djibouti'         : "{{ asset('img/flags/djibouti.png') }}",
+                'Égypte'           : "{{ asset('img/flags/egypte.png') }}",
+                'Érythrée'         : "{{ asset('img/flags/erythree.png') }}",
+                'Eswatini'         : "{{ asset('img/flags/eszatini.png') }}",
+                'Éthiopie'         : "{{ asset('img/flags/ethiopie.png') }}",
+                'Gabon'            : "{{ asset('img/flags/gabon.png') }}",
+                'Gambie'           : "{{ asset('img/flags/gambie.png') }}",
+                'Ghana'            : "{{ asset('img/flags/ghana.png') }}",
+                'Guinée'           : "{{ asset('img/flags/guinee.png') }}",
+                'Guinée-Bissau'   : "{{ asset('img/flags/guinee-bissau.png') }}",
+                'Kenya'            : "{{ asset('img/flags/kenya.png') }}",
+                'Lesotho'          : "{{ asset('img/flags/lesotho.png') }}",
+                'Libéria'          : "{{ asset('img/flags/liberia.png') }}",
+                'Libye'            : "{{ asset('img/flags/libye.png') }}",
+                'Madagascar'       : "{{ asset('img/flags/madagascar.png') }}",
+                'Malawi'           : "{{ asset('img/flags/malawi.png') }}",
+                'Mali'             : "{{ asset('img/flags/mali.png') }}",
+                'Maroc'            : "{{ asset('img/flags/maroc.png') }}",
+                'Maurice'          : "{{ asset('img/flags/maurice.png') }}",
+                'Mauritanie'       : "{{ asset('img/flags/mauritanie.png') }}",
+                'Mozambique'      : "{{ asset('img/flags/mozambique.png') }}",
+                'Namibie'          : "{{ asset('img/flags/namibie.png') }}",
+                'Niger'            : "{{ asset('img/flags/niger.png') }}",
+                'Nigeria'          : "{{ asset('img/flags/nigeria.png') }}",
+                'Ouganda'          : "{{ asset('img/flags/ouganda.png') }}",
+                'Sao Tomé-et-Principe': "{{ asset('img/flags/sao-tome-principe.png') }}",
+                'Sénégal'          : "{{ asset('img/flags/senegal.png') }}",
+                'Seychelles'       : "{{ asset('img/flags/seychelles.png') }}",
+                'Sierra Leone'     : "{{ asset('img/flags/sierra-leone.png') }}",
+                'Somalie'          : "{{ asset('img/flags/somalie.png') }}",
+                'Soudan'           : "{{ asset('img/flags/soudan.png') }}",
+                'Soudan du Sud'    : "{{ asset('img/flags/soudan-sud.png') }}",
+                'Tanzanie'         : "{{ asset('img/flags/tanzanie.png') }}",
+                'Togo'             : "{{ asset('img/flags/togo.png') }}",
+                'Tunisie'          : "{{ asset('img/flags/tunisie.png') }}",
+                'Zambie'           : "{{ asset('img/flags/zambie.png') }}",
+                'Zimbabwe'         : "{{ asset('img/flags/zimbabwe.png') }}",
+            }
+
+            function setImage(pays) {
+                const flag = document.querySelector('div.flag img')
+                flag.src   = flagPaths[pays]
+            }
+        </script>
+
+        {{ encore_entry_script_tags('capitales_afrique') }}
+    {% endblock %}
+{% endblock %}
