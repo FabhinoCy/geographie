@@ -349,7 +349,7 @@ div.gameBackground {
                         }
 
                         &.me {
-                            background-color: green;
+                            background-color: #57af57;
                         }
 
                         span.spot {

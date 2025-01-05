@@ -37,5 +37,26 @@
 
         <button class="submit" type="submit">Mettre à jour</button>
         {{ form_end(form) }}
+
+        {% if gamesByType|length > 0 %}
+            <div class="blockResults">
+                <h2>Vos résultats</h2>
+                <div class="results">
+                    {% for type, games in gamesByType %}
+                        <div class="block">
+                            <div class="height">
+                                <h3>{{ type|capitalize|replace({'-': ' '}) }}</h3>
+                            </div>
+                            <div class="bottom">
+                                {% for game in games %}
+                                    <span>{{ game.createdAt|date('H:i d/m/Y')|trans }} - {{ game.result }} points</span>
+                                    <hr>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}
